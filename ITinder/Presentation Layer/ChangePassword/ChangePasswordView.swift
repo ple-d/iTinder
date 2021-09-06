@@ -43,7 +43,7 @@ class ChangePasswordView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Изменение пароля"
         title.textAlignment = .center
-        title.textColor = Color.black
+        title.textColor = appColor.black
         title.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         title.layer.shadowColor = UIColor.black.cgColor
@@ -58,8 +58,8 @@ class ChangePasswordView: UIView {
     let oldPasswordTextField: UIGradientTextField = {
         let oldPasswordTextField = UIGradientTextField()
         oldPasswordTextField.backgroundColor = .white
-        oldPasswordTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        oldPasswordTextField.textColor = Color.black
+        oldPasswordTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        oldPasswordTextField.textColor = appColor.black
         oldPasswordTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         oldPasswordTextField.placeholderLabel.text = "Текущий пароль    \u{200c}"
         oldPasswordTextField.autocapitalizationType = .none
@@ -80,8 +80,8 @@ class ChangePasswordView: UIView {
     let newPasswordTextField: UIGradientTextField = {
         let newPasswordTextField = UIGradientTextField()
         newPasswordTextField.backgroundColor = .white
-        newPasswordTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        newPasswordTextField.textColor = Color.black
+        newPasswordTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        newPasswordTextField.textColor = appColor.black
         newPasswordTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         newPasswordTextField.placeholderLabel.text = "Новый пароль    \u{200c}"
         newPasswordTextField.autocapitalizationType = .none
@@ -102,8 +102,8 @@ class ChangePasswordView: UIView {
     let repeatNewPasswordTextField: UIGradientTextField = {
         let repeatNewPasswordTextField = UIGradientTextField()
         repeatNewPasswordTextField.backgroundColor = .white
-        repeatNewPasswordTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        repeatNewPasswordTextField.textColor = Color.black
+        repeatNewPasswordTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        repeatNewPasswordTextField.textColor = appColor.black
         repeatNewPasswordTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         repeatNewPasswordTextField.placeholderLabel.text = "Ещё разочек    \u{200c}"
         repeatNewPasswordTextField.autocapitalizationType = .none
@@ -124,7 +124,7 @@ class ChangePasswordView: UIView {
     let changeButton: UIGradientButton = {
         let changeButton = UIGradientButton()
         changeButton.translatesAutoresizingMaskIntoConstraints = false
-        changeButton.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        changeButton.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         changeButton.setTitleColor(.white, for: .normal)
         changeButton.setTitle("Изменить", for: .normal)
         changeButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.02)
@@ -144,7 +144,7 @@ class ChangePasswordView: UIView {
         let gradientLogo = UIGradientLabel()
         gradientLogo.translatesAutoresizingMaskIntoConstraints = false
         gradientLogo.text = "ITinder"
-        gradientLogo.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        gradientLogo.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         gradientLogo.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         return gradientLogo

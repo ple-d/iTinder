@@ -8,7 +8,7 @@ class ProfileView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Всё о вас"
         title.textAlignment = .center
-        title.textColor = Color.black
+        title.textColor = appColor.black
         title.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         return title
@@ -59,7 +59,7 @@ class ProfileView: UIView {
         biograpyLabel.numberOfLines = 0
         biograpyLabel.lineBreakMode = .byWordWrapping
         biograpyLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        biograpyLabel.textColor = Color.black
+        biograpyLabel.textColor = appColor.black
 
         return biograpyLabel
     }()

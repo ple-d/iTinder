@@ -63,7 +63,7 @@ class RegistrationView: UIView {
         let addUserImageButton = UIGradientButton()
         addUserImageButton.translatesAutoresizingMaskIntoConstraints = false
 
-        addUserImageButton.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        addUserImageButton.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         addUserImageButton.setTitleColor(.white, for: .normal)
         addUserImageButton.setTitle("+", for: .normal)
         addUserImageButton.titleLabel?.font = UIFont(name: "Helvetica", size: UIScreen.main.bounds.height * 0.025)
@@ -90,8 +90,8 @@ class RegistrationView: UIView {
         let genderSegmentedControl = UISegmentedControl(items: ["Мужской", "Женский"])
         genderSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         genderSegmentedControl.selectedSegmentIndex = 0
-        genderSegmentedControl.selectedSegmentTintColor = Color.pink
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.gray]
+        genderSegmentedControl.selectedSegmentTintColor = appColor.pink
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: appColor.gray]
         genderSegmentedControl.setTitleTextAttributes(titleTextAttributes, for:.normal)
 
         let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -123,8 +123,8 @@ class RegistrationView: UIView {
         let nameTextField = UIGradientTextField()
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         nameTextField.backgroundColor = .white
-        nameTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        nameTextField.textColor = Color.black
+        nameTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        nameTextField.textColor = appColor.black
         nameTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         nameTextField.placeholderLabel.text = "Ваше имя    \u{200c}"
         nameTextField.autocorrectionType = .no
@@ -146,8 +146,8 @@ class RegistrationView: UIView {
         let emailTextField = UIGradientTextField()
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.backgroundColor = .white
-        emailTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        emailTextField.textColor = Color.black
+        emailTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        emailTextField.textColor = appColor.black
         emailTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         emailTextField.placeholderLabel.text = "Электронная почта    \u{200c}"
         emailTextField.autocapitalizationType = .none
@@ -170,8 +170,8 @@ class RegistrationView: UIView {
         let passwordTextField = UIGradientTextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.backgroundColor = .white
-        passwordTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        passwordTextField.textColor = Color.black
+        passwordTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        passwordTextField.textColor = appColor.black
         passwordTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         passwordTextField.placeholderLabel.text = "Пароль    \u{200c}"
         passwordTextField.autocapitalizationType = .none
@@ -194,7 +194,7 @@ class RegistrationView: UIView {
     let registrationButton: UIGradientButton = {
         let registrationButton = UIGradientButton()
         registrationButton.translatesAutoresizingMaskIntoConstraints = false
-        registrationButton.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        registrationButton.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         registrationButton.setTitleColor(.white, for: .normal)
         registrationButton.setTitle("Далее", for: .normal)
         registrationButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.02)
@@ -216,7 +216,7 @@ class RegistrationView: UIView {
         let gradientLogo = UIGradientLabel()
         gradientLogo.translatesAutoresizingMaskIntoConstraints = false
         gradientLogo.text = "ITinder"
-        gradientLogo.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        gradientLogo.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         gradientLogo.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
         gradientLogo.addShadow()
 

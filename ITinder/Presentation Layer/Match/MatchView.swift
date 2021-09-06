@@ -23,7 +23,7 @@ class MatchView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Поиск человечка"
         title.textAlignment = .center
-        title.textColor = Color.black
+        title.textColor = appColor.black
         title.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         return title
@@ -58,7 +58,7 @@ class MatchView: UIView {
         biograpyLabel.numberOfLines = 0
         biograpyLabel.lineBreakMode = .byWordWrapping
         biograpyLabel.text = ""
-        biograpyLabel.textColor = Color.black
+        biograpyLabel.textColor = appColor.black
         
         return biograpyLabel
     }()
@@ -148,7 +148,7 @@ class MatchView: UIView {
         let anewButton = UIGradientButton()
         anewButton.translatesAutoresizingMaskIntoConstraints = false
         anewButton.clipsToBounds = true
-        anewButton.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        anewButton.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         anewButton.setTitleColor(.white, for: .normal)
         anewButton.setTitle("Заново", for: .normal)
         anewButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.02)
@@ -169,7 +169,7 @@ class MatchView: UIView {
         toSettingsActionLabel.translatesAutoresizingMaskIntoConstraints = false
         toSettingsActionLabel.isUserInteractionEnabled = true
         toSettingsActionLabel.text = "Изменить настройки"
-        toSettingsActionLabel.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        toSettingsActionLabel.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         toSettingsActionLabel.font = UIFont(name: "HelveticaNeue-Medium", size: UIScreen.main.bounds.height * 0.018)
 
         return toSettingsActionLabel

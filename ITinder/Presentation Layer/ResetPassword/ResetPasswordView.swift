@@ -43,7 +43,7 @@ class ResetPasswordView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Мы отправим письмо"
         title.textAlignment = .center
-        title.textColor = Color.black
+        title.textColor = appColor.black
         title.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         title.layer.shadowColor = UIColor.black.cgColor
@@ -58,8 +58,8 @@ class ResetPasswordView: UIView {
     let emailTextField: UIGradientTextField = {
         let emailTextField = UIGradientTextField()
         emailTextField.backgroundColor = .white
-        emailTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        emailTextField.textColor = Color.black
+        emailTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        emailTextField.textColor = appColor.black
         emailTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         emailTextField.placeholderLabel.text = "Электронная почта    \u{200c}"
         emailTextField.autocapitalizationType = .none
@@ -79,7 +79,7 @@ class ResetPasswordView: UIView {
     let resetButton: UIGradientButton = {
         let resetButton = UIGradientButton()
         resetButton.translatesAutoresizingMaskIntoConstraints = false
-        resetButton.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        resetButton.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         resetButton.setTitleColor(.white, for: .normal)
         resetButton.setTitle("Воccтановить", for: .normal)
         resetButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.02)
@@ -99,7 +99,7 @@ class ResetPasswordView: UIView {
         let gradientLogo = UIGradientLabel()
         gradientLogo.translatesAutoresizingMaskIntoConstraints = false
         gradientLogo.text = "ITinder"
-        gradientLogo.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        gradientLogo.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         gradientLogo.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         return gradientLogo

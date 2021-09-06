@@ -25,7 +25,7 @@ class AboutView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Немного о себе"
         title.textAlignment = .center
-        title.textColor = Color.black
+        title.textColor = appColor.black
         title.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         return title
@@ -71,8 +71,8 @@ class AboutView: UIView {
         let biographyTextField = UIGradientTextField()
         biographyTextField.translatesAutoresizingMaskIntoConstraints = false
         biographyTextField.backgroundColor = .white
-        biographyTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        biographyTextField.textColor = Color.black
+        biographyTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        biographyTextField.textColor = appColor.black
         biographyTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         biographyTextField.placeholderLabel.text = "Биография    \u{200c}"
         biographyTextField.autocorrectionType = .no
@@ -94,8 +94,8 @@ class AboutView: UIView {
         let birthdayTextField = UIGradientTextField()
         birthdayTextField.translatesAutoresizingMaskIntoConstraints = false
         birthdayTextField.backgroundColor = .white
-        birthdayTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        birthdayTextField.textColor = Color.black
+        birthdayTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        birthdayTextField.textColor = appColor.black
         birthdayTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         birthdayTextField.placeholderLabel.text = "Дата рождения    \u{200c}"
 
@@ -116,8 +116,8 @@ class AboutView: UIView {
         let englishLevelTextField = UIGradientTextField()
         englishLevelTextField.translatesAutoresizingMaskIntoConstraints = false
         englishLevelTextField.backgroundColor = .white
-        englishLevelTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        englishLevelTextField.textColor = Color.black
+        englishLevelTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        englishLevelTextField.textColor = appColor.black
         englishLevelTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         englishLevelTextField.placeholderLabel.text = "Уровень английского    \u{200c}"
         
@@ -138,8 +138,8 @@ class AboutView: UIView {
         let positionTextField = UIGradientTextField()
         positionTextField.translatesAutoresizingMaskIntoConstraints = false
         positionTextField.backgroundColor = .white
-        positionTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        positionTextField.textColor = Color.black
+        positionTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        positionTextField.textColor = appColor.black
         positionTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         positionTextField.placeholderLabel.text = "Должность    \u{200c}"
         positionTextField.autocorrectionType = .no
@@ -161,7 +161,7 @@ class AboutView: UIView {
         let startButton = UIGradientButton()
         startButton.translatesAutoresizingMaskIntoConstraints = false
         startButton.clipsToBounds = true
-        startButton.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        startButton.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         startButton.setTitleColor(.white, for: .normal)
         startButton.setTitle("Начать", for: .normal)
         startButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.02)
@@ -216,7 +216,7 @@ class AboutView: UIView {
         toRegistrationActionLabel.translatesAutoresizingMaskIntoConstraints = false
         toRegistrationActionLabel.isUserInteractionEnabled = true
         toRegistrationActionLabel.text = "Смени!"
-        toRegistrationActionLabel.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        toRegistrationActionLabel.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         toRegistrationActionLabel.font = UIFont(name: "HelveticaNeue-Medium", size: UIScreen.main.bounds.height * 0.018)
 
         return toRegistrationActionLabel
@@ -227,7 +227,7 @@ class AboutView: UIView {
         let gradientLogo = UIGradientLabel()
         gradientLogo.translatesAutoresizingMaskIntoConstraints = false
         gradientLogo.text = "ITinder"
-        gradientLogo.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        gradientLogo.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         gradientLogo.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         return gradientLogo

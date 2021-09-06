@@ -43,7 +43,7 @@ class AuthenticationView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Войди и ищи"
         title.textAlignment = .center
-        title.textColor = Color.black
+        title.textColor = appColor.black
         title.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         title.layer.shadowColor = UIColor.black.cgColor
@@ -58,8 +58,8 @@ class AuthenticationView: UIView {
     let emailTextField: UIGradientTextField = {
         let emailTextField = UIGradientTextField()
         emailTextField.backgroundColor = .white
-        emailTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        emailTextField.textColor = Color.black
+        emailTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        emailTextField.textColor = appColor.black
         emailTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         emailTextField.placeholderLabel.text = "Электронная почта    \u{200c}"
         emailTextField.autocapitalizationType = .none
@@ -78,8 +78,8 @@ class AuthenticationView: UIView {
     // Текстовое поле "Пароль"
     let passwordTextField: UIGradientTextField = {
         let passwordTextField = UIGradientTextField()
-        passwordTextField.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
-        passwordTextField.textColor = Color.black
+        passwordTextField.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
+        passwordTextField.textColor = appColor.black
         passwordTextField.font = UIFont(name: "HelveticaNeue", size: UIScreen.main.bounds.height * 0.018)
         passwordTextField.placeholderLabel.text = "Пароль    \u{200c}"
         passwordTextField.autocapitalizationType = .none
@@ -100,7 +100,7 @@ class AuthenticationView: UIView {
     let authenticationButton: UIGradientButton = {
         let authenticationButton = UIGradientButton()
         authenticationButton.translatesAutoresizingMaskIntoConstraints = false
-        authenticationButton.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        authenticationButton.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         authenticationButton.setTitleColor(.white, for: .normal)
         authenticationButton.setTitle("Войти", for: .normal)
         authenticationButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.02)
@@ -145,7 +145,7 @@ class AuthenticationView: UIView {
         toRegistrationActionLabel.translatesAutoresizingMaskIntoConstraints = false
         toRegistrationActionLabel.isUserInteractionEnabled = true
         toRegistrationActionLabel.text = "Зарегистрируйся!"
-        toRegistrationActionLabel.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        toRegistrationActionLabel.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         toRegistrationActionLabel.font = UIFont(name: "HelveticaNeue-Medium", size: UIScreen.main.bounds.height * 0.018)
 
         return toRegistrationActionLabel
@@ -157,7 +157,7 @@ class AuthenticationView: UIView {
         toResetPasswordActionLabel.translatesAutoresizingMaskIntoConstraints = false
         toResetPasswordActionLabel.isUserInteractionEnabled = true
         toResetPasswordActionLabel.text = "Я забыл пароль"
-        toResetPasswordActionLabel.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        toResetPasswordActionLabel.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         toResetPasswordActionLabel.font = UIFont(name: "HelveticaNeue-Medium", size: UIScreen.main.bounds.height * 0.018)
 
         return toResetPasswordActionLabel
@@ -168,7 +168,7 @@ class AuthenticationView: UIView {
         let gradientLogo = UIGradientLabel()
         gradientLogo.translatesAutoresizingMaskIntoConstraints = false
         gradientLogo.text = "ITinder"
-        gradientLogo.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        gradientLogo.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         gradientLogo.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
         
         return gradientLogo

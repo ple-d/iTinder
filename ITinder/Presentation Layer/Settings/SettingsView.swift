@@ -25,7 +25,7 @@ class SettingsView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Настройки"
         title.textAlignment = .center
-        title.textColor = Color.black
+        title.textColor = appColor.black
         title.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         return title
@@ -62,7 +62,7 @@ class SettingsView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Дистанция поиска"
         title.textAlignment = .center
-        title.textColor = Color.black
+        title.textColor = appColor.black
         title.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.02)
 
         title.layer.shadowColor = UIColor.black.cgColor
@@ -110,7 +110,7 @@ class SettingsView: UIView {
         updateLocationActionLabel.translatesAutoresizingMaskIntoConstraints = false
         updateLocationActionLabel.isUserInteractionEnabled = true
         updateLocationActionLabel.text = "Обновить геолокацию"
-        updateLocationActionLabel.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        updateLocationActionLabel.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         updateLocationActionLabel.font = UIFont(name: "HelveticaNeue-Medium", size: UIScreen.main.bounds.height * 0.018)
 
         return updateLocationActionLabel
@@ -122,7 +122,7 @@ class SettingsView: UIView {
         changePasswordActionLabel.translatesAutoresizingMaskIntoConstraints = false
         changePasswordActionLabel.isUserInteractionEnabled = true
         changePasswordActionLabel.text = "Изменить пароль"
-        changePasswordActionLabel.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        changePasswordActionLabel.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         changePasswordActionLabel.font = UIFont(name: "HelveticaNeue-Medium", size: UIScreen.main.bounds.height * 0.018)
 
         return changePasswordActionLabel
@@ -134,7 +134,7 @@ class SettingsView: UIView {
         changeEmailActionLabel.translatesAutoresizingMaskIntoConstraints = false
         changeEmailActionLabel.isUserInteractionEnabled = true
         changeEmailActionLabel.text = "Изменить адрес электронной почты"
-        changeEmailActionLabel.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        changeEmailActionLabel.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         changeEmailActionLabel.font = UIFont(name: "HelveticaNeue-Medium", size: UIScreen.main.bounds.height * 0.018)
 
         return changeEmailActionLabel
@@ -146,7 +146,7 @@ class SettingsView: UIView {
         toAuthenticationActionLabel.translatesAutoresizingMaskIntoConstraints = false
         toAuthenticationActionLabel.isUserInteractionEnabled = true
         toAuthenticationActionLabel.text = "Выйти из учетной записи"
-        toAuthenticationActionLabel.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        toAuthenticationActionLabel.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         toAuthenticationActionLabel.font = UIFont(name: "HelveticaNeue-Medium", size: UIScreen.main.bounds.height * 0.018)
 
         return toAuthenticationActionLabel
@@ -157,7 +157,7 @@ class SettingsView: UIView {
         let gradientLogo = UIGradientLabel()
         gradientLogo.translatesAutoresizingMaskIntoConstraints = false
         gradientLogo.text = "ITinder"
-        gradientLogo.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        gradientLogo.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         gradientLogo.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         return gradientLogo
