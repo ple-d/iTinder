@@ -14,7 +14,7 @@ struct MessagesView: View {
     
     var body: some View {
         VStack(spacing: 0){
-            MatchView().zIndex(25)
+            MatchedView().zIndex(25)
             ChatsView().offset(y: -25)
         }.navigationBarTitle("Чаты", displayMode: .inline)
     }

@@ -7,11 +7,11 @@ class ConversationsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let matchView = MatchView()
+        let matchView = MatchedView()
         let viewControl = UIHostingController(rootView: matchView)
         addChild(viewControl)
-        viewControl.view.frame = theContainer.bounds
-        theContainer.addSubview(viewControl.view)
+        viewControl.view.frame = theContainer?.bounds ?? .zero
+        theContainer?.addSubview(viewControl.view)
         viewControl.didMove(toParent: self)
     }
 

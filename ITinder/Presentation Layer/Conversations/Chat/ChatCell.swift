@@ -19,7 +19,7 @@ struct ChatCell : View {
                     .padding()
                     .background(Color(.brown))
                     .clipShape(msgTail(userMsg: message.user == storageManager.currentUser?.id))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
             }
             else{
                 Text(message.msg)

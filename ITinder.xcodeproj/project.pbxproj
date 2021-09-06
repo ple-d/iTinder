@@ -80,6 +80,8 @@
 		D6F0DAA526E6A31F008A181B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0DAA426E6A31F008A181B /* Message.swift */; };
 		D6F0DAA726E6A335008A181B /* OtherUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0DAA626E6A335008A181B /* OtherUser.swift */; };
 		D6F0DAA926E6A372008A181B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0DAA826E6A372008A181B /* StorageManager.swift */; };
+		D6F0DAAB26E6AD90008A181B /* UIImage+ExtensionsSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0DAAA26E6AD90008A181B /* UIImage+ExtensionsSwiftUI.swift */; };
+		D6F0DAAD26E6AF12008A181B /* GradientProfilePicture-SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F0DAAC26E6AF12008A181B /* GradientProfilePicture-SwiftUI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,6 +162,8 @@
 		D6F0DAA426E6A31F008A181B /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D6F0DAA626E6A335008A181B /* OtherUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUser.swift; sourceTree = "<group>"; };
 		D6F0DAA826E6A372008A181B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		D6F0DAAA26E6AD90008A181B /* UIImage+ExtensionsSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ExtensionsSwiftUI.swift"; sourceTree = "<group>"; };
+		D6F0DAAC26E6AF12008A181B /* GradientProfilePicture-SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GradientProfilePicture-SwiftUI.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +305,7 @@
 				CFA9C5AD26D1B29700B1734A /* CardView.swift */,
 				CFF799AE26E2314400A8EEE8 /* OnboardingCollectionViewCell.swift */,
 				CFF799C026E4BE3600A8EEE8 /* MatchCollectionViewCell.swift */,
+				D6F0DAAC26E6AF12008A181B /* GradientProfilePicture-SwiftUI.swift */,
 			);
 			path = "Custom UI-elements";
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				CF6AB40F26C4802300F0B580 /* Encodable + Extension.swift */,
 				CF3E8A4926D04710009CA554 /* Collection + Extension.swift */,
 				CFF799BE26E358F600A8EEE8 /* UIImage + Extensions.swift */,
+				D6F0DAAA26E6AD90008A181B /* UIImage+ExtensionsSwiftUI.swift */,
 				CFF799FF26E6525400A8EEE8 /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
@@ -630,10 +636,12 @@
 				CFA9C5A826D18DD700B1734A /* ProfilePresenter.swift in Sources */,
 				CF3E8A4126CF7A09009CA554 /* AboutView.swift in Sources */,
 				CFF799B126E2465700A8EEE8 /* OnboardingSlide.swift in Sources */,
+				D6F0DAAB26E6AD90008A181B /* UIImage+ExtensionsSwiftUI.swift in Sources */,
 				CF3E8A4526CF7A20009CA554 /* AboutPresenter.swift in Sources */,
 				CFA9C5AC26D18DF700B1734A /* ProfileController.swift in Sources */,
 				CFF799FA26E619F700A8EEE8 /* ChangePasswordPresenter.swift in Sources */,
 				D6F0DA9E26E6A25C008A181B /* ChatTopView.swift in Sources */,
+				D6F0DAAD26E6AF12008A181B /* GradientProfilePicture-SwiftUI.swift in Sources */,
 				CFF799B926E3558800A8EEE8 /* ConversationsController.swift in Sources */,
 				D6F0DAA726E6A335008A181B /* OtherUser.swift in Sources */,
 				CFF799FC26E6292100A8EEE8 /* UserSettings.swift in Sources */,

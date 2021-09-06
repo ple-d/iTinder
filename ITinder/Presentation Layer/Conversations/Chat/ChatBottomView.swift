@@ -23,8 +23,8 @@ struct ChatBottomView : View {
                 }
             }
         }
-        .background(Color.white)
         .padding(.horizontal)
+        .background(Color.white)
 //        HStack{
 //
 //            HStack(spacing : 8){
