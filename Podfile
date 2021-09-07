@@ -10,6 +10,7 @@ target 'ITinder' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift', '8.6.0-beta'
   pod 'SwiftLint'
   pod 'SDWebImageSwiftUI'
   

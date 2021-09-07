@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Firebase
-import FirebaseFirestore
 
 class StorageManager : ObservableObject {
     

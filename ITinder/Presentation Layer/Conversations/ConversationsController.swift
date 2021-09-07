@@ -7,8 +7,8 @@ class ConversationsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let matchView = MatchedView()
-        let viewControl = UIHostingController(rootView: matchView)
+        let messagesView = MessagesView()
+        let viewControl = UIHostingController(rootView: messagesView)
         addChild(viewControl)
         viewControl.view.frame = theContainer?.bounds ?? .zero
         theContainer?.addSubview(viewControl.view)
