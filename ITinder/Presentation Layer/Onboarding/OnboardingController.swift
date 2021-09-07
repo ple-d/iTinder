@@ -68,9 +68,9 @@ class OnboardingController: UIViewController, OnboardingViewProtocol {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.numberOfPages = 3
         pageControl.currentPage = 0
-        pageControl.currentPageIndicatorTintColor = Color.pink
-        pageControl.tintColor = Color.gray
-        pageControl.pageIndicatorTintColor = Color.gray
+        pageControl.currentPageIndicatorTintColor = appColor.pink
+        pageControl.tintColor = appColor.gray
+        pageControl.pageIndicatorTintColor = appColor.gray
         pageControl.isUserInteractionEnabled = false
         return pageControl
     }()
@@ -86,7 +86,7 @@ class OnboardingController: UIViewController, OnboardingViewProtocol {
         let nextButton = UIGradientButton()
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.clipsToBounds = true
-        nextButton.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        nextButton.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         nextButton.setTitleColor(.white, for: .normal)
         nextButton.setTitle("Дальше", for: .normal)
         nextButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.02)

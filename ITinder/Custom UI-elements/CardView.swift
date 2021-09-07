@@ -86,7 +86,7 @@ class CardView: UIView {
     let photoCollectionPageControl: UIPageControl = {
         let photoCollectionPageControl = UIPageControl()
         photoCollectionPageControl.translatesAutoresizingMaskIntoConstraints = false
-        photoCollectionPageControl.currentPageIndicatorTintColor = Color.pink
+        photoCollectionPageControl.currentPageIndicatorTintColor = appColor.pink
         photoCollectionPageControl.tintColor = .white
         photoCollectionPageControl.pageIndicatorTintColor = .white
         photoCollectionPageControl.isUserInteractionEnabled = false
@@ -106,7 +106,7 @@ class CardView: UIView {
         nameAndAgeLabel.translatesAutoresizingMaskIntoConstraints = false
         nameAndAgeLabel.text = "Имя, 0"
         nameAndAgeLabel.textAlignment = .center
-        nameAndAgeLabel.textColor = Color.black
+        nameAndAgeLabel.textColor = appColor.black
 
 
         return nameAndAgeLabel
@@ -124,7 +124,7 @@ class CardView: UIView {
         genderLabel.translatesAutoresizingMaskIntoConstraints = false
         genderLabel.text = "пол"
         genderLabel.textAlignment = .center
-        genderLabel.textColor = Color.gray
+        genderLabel.textColor = appColor.gray
 
         return genderLabel
     }()
@@ -141,7 +141,7 @@ class CardView: UIView {
         positionLabel.translatesAutoresizingMaskIntoConstraints = false
         positionLabel.text = "👨‍💻 Профессия"
         positionLabel.textAlignment = .center
-        positionLabel.textColor = Color.gray
+        positionLabel.textColor = appColor.gray
 
         return positionLabel
     }()
@@ -158,7 +158,7 @@ class CardView: UIView {
         englishLevelLabel.translatesAutoresizingMaskIntoConstraints = false
         englishLevelLabel.text = "🇬🇧 Уровень английского"
         englishLevelLabel.textAlignment = .center
-        englishLevelLabel.textColor = Color.gray
+        englishLevelLabel.textColor = appColor.gray
 
         return englishLevelLabel
     }()
@@ -175,7 +175,7 @@ class CardView: UIView {
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
         locationLabel.text = ""
         locationLabel.textAlignment = .right
-        locationLabel.textColor = Color.gray
+        locationLabel.textColor = appColor.gray
 
         return locationLabel
     }()

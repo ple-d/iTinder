@@ -29,7 +29,7 @@ class UIWarningView: UIView {
     private let titleLabel: UIGradientLabel = {
         let titleLabel = UIGradientLabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        titleLabel.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.020)
 
         return titleLabel
@@ -47,7 +47,7 @@ class UIWarningView: UIView {
     private let textLabel: UILabel = {
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
-        textLabel.textColor = Color.black
+        textLabel.textColor = appColor.black
         textLabel.numberOfLines = 0
         textLabel.lineBreakMode = .byWordWrapping
 

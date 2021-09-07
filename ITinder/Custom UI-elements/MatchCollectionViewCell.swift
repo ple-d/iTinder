@@ -29,7 +29,7 @@ class MatchCollectionViewCell: UICollectionViewCell {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.text = "Дмитрий"
         nameLabel.textAlignment = .center
-        nameLabel.textColor = Color.black
+        nameLabel.textColor = appColor.black
 
 
         return nameLabel

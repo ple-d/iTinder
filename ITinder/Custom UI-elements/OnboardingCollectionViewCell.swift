@@ -23,7 +23,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textColor = Color.black
+        titleLabel.textColor = appColor.black
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
         titleLabel.lineBreakMode = .byWordWrapping
@@ -42,7 +42,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     let textLabel: UILabel = {
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
-        textLabel.textColor = Color.gray
+        textLabel.textColor = appColor.gray
         textLabel.textAlignment = .center
         textLabel.numberOfLines = 0
         textLabel.lineBreakMode = .byWordWrapping

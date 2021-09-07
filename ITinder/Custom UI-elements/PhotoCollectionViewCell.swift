@@ -27,7 +27,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         let plusLabel = UIGradientLabel()
         plusLabel.translatesAutoresizingMaskIntoConstraints = false
         plusLabel.text = "+"
-        plusLabel.gradientColors = [Color.pink.cgColor, Color.blue.cgColor]
+        plusLabel.gradientColors = [appColor.pink.cgColor, appColor.blue.cgColor]
         plusLabel.font = UIFont(name: "Helvetica", size: UIScreen.main.bounds.height * 0.035)
         plusLabel.isHidden = true
 

@@ -37,7 +37,7 @@ class UIGradientTextField: UITextField {
 
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
         placeholderLabel.textAlignment = .center
-        placeholderLabel.textColor = Color.gray
+        placeholderLabel.textColor = appColor.gray
         placeholderLabel.font = UIFont(name: "HelveticaNeue-Medium", size: UIScreen.main.bounds.height * 0.017)
         placeholderLabel.backgroundColor = .white
 

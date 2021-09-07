@@ -6,7 +6,7 @@ class MatchPopUpView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = "Вот это совпадение!"
         titleLabel.textAlignment = .center
-        titleLabel.textColor = Color.black
+        titleLabel.textColor = appColor.black
         titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.035)
 
         return titleLabel

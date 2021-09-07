@@ -78,8 +78,8 @@ class SettingsView: UIView {
         let distanceSegmentedControl = UISegmentedControl(items: ["20", "100", "1000", "∞"])
         distanceSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         distanceSegmentedControl.selectedSegmentIndex = 0
-        distanceSegmentedControl.selectedSegmentTintColor = Color.pink
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.gray]
+        distanceSegmentedControl.selectedSegmentTintColor = appColor.pink
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: appColor.gray]
         distanceSegmentedControl.setTitleTextAttributes(titleTextAttributes, for:.normal)
 
         let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.white]
