@@ -106,6 +106,7 @@ class StorageManager : ObservableObject {
                 print(error!.localizedDescription)
                 return
             }
+            
             if !currentUser.chats.contains(chatId){
                 var chats = currentUser.chats
                 chats.append(chatId)
