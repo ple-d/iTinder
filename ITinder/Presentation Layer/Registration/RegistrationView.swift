@@ -276,7 +276,7 @@ class RegistrationView: UIView {
         warningView.setup()
     }
 
-    override required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 

@@ -130,7 +130,7 @@ class ProfileView: UIView {
         biographyLabelConstraints()
     }
 
-    override required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
