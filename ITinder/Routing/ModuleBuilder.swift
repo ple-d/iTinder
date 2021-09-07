@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import SwiftUI
 
 protocol ModuleBuilderProtocol {
     func buildAuthenticationModule(moduleRouter: ModuleRouterProtocol) -> UIViewController
@@ -124,9 +125,11 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
     func buildMainApplicationModule(moduleRouter: ModuleRouterProtocol) -> UITabBarController {
         let tabBarController = UITabBarController()
-
+        let storageManager = StorageManager()
+        let swiftUIController = UIHostingController(rootView: MessagesView().environmentObject(storageManager))
+        swiftUIController.tabBarItem = UITabBarItem(title: "Общение", image: UIImage(named: "chatIcon"), tag: 2)
         tabBarController.tabBar.backgroundImage = UIImage.getColorImage(color: .white, size: tabBarController.tabBar.bounds.size)
-        tabBarController.setViewControllers([buildProfileModule(moduleRouter: moduleRouter), buildMatchModule(moduleRouter: moduleRouter), buildСonversationsModule(moduleRouter: moduleRouter)], animated: false)
+        tabBarController.setViewControllers([buildProfileModule(moduleRouter: moduleRouter), buildMatchModule(moduleRouter: moduleRouter), swiftUIController], animated: false)
 
         return tabBarController
     }

@@ -10,8 +10,6 @@ import SwiftUI
 struct MessagesView: View {
     @EnvironmentObject var storageManager: StorageManager
     
-    @State var expand = false
-    
     var body: some View {
         VStack(spacing: 0){
             MatchedView().zIndex(25)

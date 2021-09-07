@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseFirestoreSwift
-    // idk what's wrong
+
 struct Message: Identifiable, Codable, Hashable {
     @DocumentID var id: String?
     var msg: String
