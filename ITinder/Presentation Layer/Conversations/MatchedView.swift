@@ -19,12 +19,12 @@ struct MatchedView: View {
             
             HStack{
                 
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-
-                    Image(systemName: "control").font(.title).rotationEffect(.init(degrees: -90))
-                }
+//                Button(action: {
+//                    presentationMode.wrappedValue.dismiss()
+//                }) {
+//
+//                    Image(systemName: "control").font(.title).rotationEffect(.init(degrees: -90))
+//                }
                 
                 Text("Ваши матчи")
                     .fontWeight(.bold)

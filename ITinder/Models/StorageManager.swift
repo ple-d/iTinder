@@ -11,48 +11,27 @@ import Firebase
 class StorageManager : ObservableObject {
     
     @Published var currentUser: CurrentUser?
-    @Published var currentUserPictures = [URL]()
     @Published var users = [OtherUser]()
     @Published var matches = [OtherUser]()
     @Published var chats = [OtherUser]()
     @Published var messages = [String:[Message]]()
-    
-    
-    @Published var last = -1
     
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
     private var curMatches = [String]()
     private var curChats = Set<String>()
     
-    func createUser(user: CurrentUser) {
-        let db = Firestore.firestore()
-        let docRef = db.collection("users").document(user.id)
-        docRef.setData(user.dictionary) { error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
     func checkChats(id: String, chats: Set<String>, matches: [OtherUser]) {
-        print(chats)
         if self.curChats != chats {
-//
+
             let added = chats.subtracting(self.curChats)
             self.curChats = chats
-            print("added", added, self.chats)
-//                    self.fetchMatches(matches: Array(added)) { data in
-//                        self.chats += data
-//                        print(data)
-//                    }
             
             for chatId in added {
-//                print("matches", matches)
                 if let chat = matches.first( where: {$0.id == chatId }) {
                     
                     self.chats.insert(chat, at: 0)}
-                print("suk", chatId, self.chats)
+                
                 self.setUserChatListener(userId: id, chatId: chatId)
             }
         }
@@ -76,16 +55,10 @@ class StorageManager : ObservableObject {
                 
                 self.currentUser = CurrentUser(id: id, name: data["name"] as? String ?? "", email: data["email"] as? String ?? "", location: data["location"] as? String ?? "", imagePaths: imagePaths, likes: data["likes"] as? [String] ?? [], dislikes: data["dislikes"] as? [String] ?? [], matches: matches, chats: Array(chats), biography: data["biography"] as? String ?? "")
                 
-                self.fetchUserPictures(id: id) {data in
-                    self.currentUserPictures = data
-//                    print(self.currentUserPictures)
-                }
                 if self.curMatches != matches {
                     self.curMatches = matches
                     self.fetchMatches(matches: matches) { data in
                         self.matches = data
-//                        print("snapik", self.curMatches, data)
-                        print("data", chats)
                         self.checkChats(id: id, chats: chats, matches: data)
                     }
                 } else {
@@ -97,7 +70,7 @@ class StorageManager : ObservableObject {
     }
     
     func setUserChatListener(userId: String, chatId: String) {
-//        print("setChat", chatId)
+
         db.collection("users").document(userId).collection(chatId).addSnapshotListener { snap, error in
             if error != nil {
                 print(error?.localizedDescription ?? "")
@@ -107,9 +80,9 @@ class StorageManager : ObservableObject {
             guard let data = snap else { return }
             var msgs = self.messages[chatId] ?? []
             data.documentChanges.forEach { doc in
-//                print("doc", doc)
+
                 if doc.type == .added {
-//                    print("added")
+
                     guard let msg = try? doc.document.data(as: Message.self) else { return }
                     msgs.append(msg)
                     DispatchQueue.main.async {
@@ -136,12 +109,6 @@ class StorageManager : ObservableObject {
         }
     }
     
-//    func fetchChats(chatId: String) {
-//        if self.chats.first(where: {$0.id == chatId}) == nil, let chat = self.matches.first( where: {$0.id == chatId }) {
-//            self.chats.insert(chat, at: 0)
-//            print(self.chats)
-//        }
-//    }
     
     func fetchMatches(matches: [String], completion: @escaping ([OtherUser]) -> ()) {
         let group = DispatchGroup()
@@ -258,9 +225,6 @@ class StorageManager : ObservableObject {
                 storageRef.downloadURL { url, error in
                     completion(url?.absoluteString)
                 }
-//                if let metadata = metadata {
-//                    print("Metadata: ", metadata)
-//                }
             }
         }
     }
@@ -276,8 +240,6 @@ class StorageManager : ObservableObject {
             if let error = error {
                 print("Error while listing all files: ", error)
             }
-            //            self.pictures = result.items as? [Data] ?? []
-            //            print("pics", self.pictures)
            
             for item in result.items {
                 //List storage reference

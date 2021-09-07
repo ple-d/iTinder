@@ -126,6 +126,9 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     func buildMainApplicationModule(moduleRouter: ModuleRouterProtocol) -> UITabBarController {
         let tabBarController = UITabBarController()
         let storageManager = StorageManager()
+        if let id = User.currentUser?.id {
+        storageManager.setUserListener(id: id)
+        }
         let swiftUIController = UIHostingController(rootView: MessagesView().environmentObject(storageManager))
         swiftUIController.tabBarItem = UITabBarItem(title: "Общение", image: UIImage(named: "chatIcon"), tag: 2)
         tabBarController.tabBar.backgroundImage = UIImage.getColorImage(color: .white, size: tabBarController.tabBar.bounds.size)
