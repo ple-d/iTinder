@@ -53,25 +53,6 @@ class ProfileView: UIView {
         ])
     }
 
-    let biographyLabel: UILabel = {
-        let biograpyLabel = UILabel()
-        biograpyLabel.translatesAutoresizingMaskIntoConstraints = false
-        biograpyLabel.numberOfLines = 0
-        biograpyLabel.lineBreakMode = .byWordWrapping
-        biograpyLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        biograpyLabel.textColor = appColor.black
-
-        return biograpyLabel
-    }()
-
-    func biographyLabelConstraints() {
-        NSLayoutConstraint.activate([
-            biographyLabel.topAnchor.constraint(equalTo: settingsButton.bottomAnchor, constant: UIScreen.main.bounds.height / 100),
-            biographyLabel.leftAnchor.constraint(equalTo: card.leftAnchor, constant: 10),
-            biographyLabel.rightAnchor.constraint(equalTo: card.rightAnchor, constant: -10)
-        ])
-    }
-
     let editButton: UIImageView = {
         let editButton = UIImageView()
         editButton.isUserInteractionEnabled = true
@@ -107,6 +88,44 @@ class ProfileView: UIView {
         ])
     }
 
+    let biographyLabel: UILabel = {
+        let biograpyLabel = UILabel()
+        biograpyLabel.translatesAutoresizingMaskIntoConstraints = false
+        biograpyLabel.numberOfLines = 0
+        biograpyLabel.lineBreakMode = .byWordWrapping
+        biograpyLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        biograpyLabel.textColor = appColor.black
+
+        return biograpyLabel
+    }()
+
+    func biographyLabelConstraints() {
+        NSLayoutConstraint.activate([
+            biographyLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: UIScreen.main.bounds.height / 100),
+            biographyLabel.leftAnchor.constraint(equalTo: card.leftAnchor, constant: 10),
+            biographyLabel.rightAnchor.constraint(equalTo: card.rightAnchor, constant: -10)
+        ])
+    }
+
+    let locationLabel: UILabel = {
+        let locationLabel = UILabel()
+        locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        locationLabel.numberOfLines = 0
+        locationLabel.lineBreakMode = .byWordWrapping
+        locationLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        locationLabel.textColor = appColor.black
+
+        return locationLabel
+    }()
+
+    func locationLabelConstraints() {
+        NSLayoutConstraint.activate([
+            locationLabel.topAnchor.constraint(equalTo: settingsButton.bottomAnchor, constant: UIScreen.main.bounds.height / 100),
+            locationLabel.leftAnchor.constraint(equalTo: card.leftAnchor, constant: 10),
+            locationLabel.rightAnchor.constraint(equalTo: card.rightAnchor, constant: -10)
+        ])
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -116,7 +135,7 @@ class ProfileView: UIView {
 
         addSubview(title)
         titleConstraints()
-        
+
         addSubview(card)
         cardConstraints()
 
@@ -126,11 +145,14 @@ class ProfileView: UIView {
         addSubview(settingsButton)
         settingsButtonConstraints()
 
+        addSubview(locationLabel)
+        locationLabelConstraints()
+
         addSubview(biographyLabel)
         biographyLabelConstraints()
     }
 
-    required init?(coder: NSCoder) {
+    override required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
@@ -142,5 +164,6 @@ class ProfileView: UIView {
         settingsButton.layer.cornerRadius = settingsButton.bounds.height / 2
 
         biographyLabel.font = UIFont(name: "HelveticaNeue-Medium", size: bounds.height * 0.02)
+        locationLabel.font = UIFont(name: "HelveticaNeue-Bold", size: bounds.height * 0.022)
     }
 }

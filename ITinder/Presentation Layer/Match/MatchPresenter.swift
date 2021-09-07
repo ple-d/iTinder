@@ -10,6 +10,7 @@ protocol MatchPresenterProtocol: AnyObject {
     func loadUsers(count: Int)
     func toSettings()
     func anew()
+    func toChat()
 }
 
 class MatchPresenter: MatchPresenterProtocol {
@@ -19,16 +20,16 @@ class MatchPresenter: MatchPresenterProtocol {
     private let firebaseManager = FirebaseManager()
     private var distanceCanceled = [String]()
 
-    var observer: NSKeyValueObservation?
+    var distanceObserver: NSKeyValueObservation?
 
     init(view: MatchViewProtocol, moduleRouter: ModuleRouterProtocol) {
         self.view = view
         self.moduleRouter = moduleRouter
 
-        loadUsers(count: 3)
+        loadUsers(count: 10)
         getImageData()
 
-        observer = UserDefaults.standard.observe(\.distance, options: [.new]) { (defaults, change) in
+        distanceObserver = UserDefaults.standard.observe(\.distance, options: [.new]) { (defaults, change) in
             self.update()
         }
     }
@@ -37,6 +38,7 @@ class MatchPresenter: MatchPresenterProtocol {
         didSet {
             view?.noCardStackViewIsVisible(users.isEmpty)
             view?.setBiography(users.first?.biography ?? "")
+            view?.setLocation(country: users.first?.country ?? "Нет страны", city: users.first?.city ?? "нет города")
         }
     }
 
@@ -51,7 +53,7 @@ class MatchPresenter: MatchPresenterProtocol {
             }
 
             User.currentUser?.imageDictionary[imagePath] = imageData
-            
+
         }
     }
 
@@ -63,7 +65,7 @@ class MatchPresenter: MatchPresenterProtocol {
             }
 
             User.currentUser?.dislikes = []
-            self?.loadUsers(count: 3)
+            self?.loadUsers(count: 10)
         }
     }
 
@@ -71,7 +73,7 @@ class MatchPresenter: MatchPresenterProtocol {
         distanceCanceled.removeAll()
         users.removeAll()
         view?.update()
-        loadUsers(count: 3)
+        loadUsers(count: 10)
     }
 
     func toSettings() {
@@ -79,39 +81,44 @@ class MatchPresenter: MatchPresenterProtocol {
     }
 
     func loadUsers(count: Int) {
-        if !users.isEmpty {
-            users.remove(at: 0)
-        }
-
-
         let currentUserID = User.currentUser?.id ?? ""
-        let userIDArray = users.map { user in
-            return user.id ?? ""
-        }
         let likes = User.currentUser?.likes ?? []
         let dislikes = User.currentUser?.dislikes ?? []
 
-        firebaseManager.fetchUsersForMatch(excludedIDArray: [currentUserID] + userIDArray + likes + dislikes + distanceCanceled, count: count) { user, error in
+        firebaseManager.fetchUsersForMatch(excludedIDArray: [currentUserID], count: count) { user, error in
             guard let user = user, error == nil else {
                 return
             }
 
-            if self.getDistance(latitude: user.latitude ?? 0, longitude: user.longitude ?? 0) > UserSettings.distance {
-                self.distanceCanceled.append(user.id ?? "")
-                self.loadUsers(count: 1)
+            guard !likes.contains(user.id ?? "") else{
                 return
+            }
+
+            guard !dislikes.contains(user.id ?? "") else{
+                return
+            }
+
+            if  UserSettings.distance == 0 {
+                print("Поиск по городу")
+                guard user.city == User.currentUser!.city else {
+                    return
+                }
+            } else {
+                print("Поиск по дистанции")
+                guard self.getDistance(latitude: user.latitude ?? 0, longitude: user.longitude ?? 0) < UserSettings.distance else{
+
+                    return
+                }
             }
 
             self.users.append(user)
             self.view?.newCard(user: user, distance: self.getDistance(latitude: user.latitude ?? 0, longitude: user.longitude ?? 0))
 
-            
             self.firebaseManager.loadUserImages(imagePaths: user.imagePaths) { imagePath, imageData, error in
                 guard let imageData = imageData, error == nil else {
 
                     return
                 }
-
 
                 user.imageDictionary[imagePath] = imageData
             }
@@ -120,7 +127,7 @@ class MatchPresenter: MatchPresenterProtocol {
     }
 
     func getDistance(latitude: Double, longitude: Double) -> Int {
-        let currentUserLocation = CLLocation(latitude: User.currentUser?.latitude ?? 0, longitude: User.currentUser?.latitude ?? 0)
+        let currentUserLocation = CLLocation(latitude: User.currentUser?.latitude ?? 0, longitude: User.currentUser?.longitude ?? 0)
         let otherUserLocation = CLLocation(latitude: latitude, longitude: longitude)
 
         return Int(currentUserLocation.distance(from: otherUserLocation) / 1000)
@@ -132,6 +139,9 @@ class MatchPresenter: MatchPresenterProtocol {
             guard error == nil else {
                 return
             }
+            if !self.users.isEmpty {
+                self.users.remove(at: 0)
+            }
 
         }
     }
@@ -141,6 +151,9 @@ class MatchPresenter: MatchPresenterProtocol {
         firebaseManager.updateDislikes(userID: User.currentUser?.id ?? "", dislikes: User.currentUser?.dislikes ?? []) { error in
             guard error == nil else {
                 return
+            }
+            if !self.users.isEmpty {
+                self.users.remove(at: 0)
             }
 
         }
@@ -154,12 +167,16 @@ class MatchPresenter: MatchPresenterProtocol {
             guard error == nil else {
                 return
             }
-
+            self.view?.showItsMatchView()
         }
     }
 
+    func toChat() {
+        print("В чат!")
+    }
+
     deinit {
-        observer?.invalidate()
+        distanceObserver?.invalidate()
     }
 
     // Метод возвращающий количество изображений у пользователя

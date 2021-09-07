@@ -60,7 +60,7 @@ class SettingsView: UIView {
     let distanceTitle: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Дистанция поиска"
+        title.text = "Дистанция поиска (км)"
         title.textAlignment = .center
         title.textColor = appColor.black
         title.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height * 0.02)
@@ -75,7 +75,7 @@ class SettingsView: UIView {
 
     // SegmentedControl для выбора дистанции
     let distanceSegmentedControl: UISegmentedControl = {
-        let distanceSegmentedControl = UISegmentedControl(items: ["20", "100", "1000", "∞"])
+        let distanceSegmentedControl = UISegmentedControl(items: ["Город", "20", "100", "1000", "∞"])
         distanceSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         distanceSegmentedControl.selectedSegmentIndex = 0
         distanceSegmentedControl.selectedSegmentTintColor = appColor.pink
@@ -99,7 +99,7 @@ class SettingsView: UIView {
 
     func distanceSegmentedControlConstraints() {
         NSLayoutConstraint.activate([
-            distanceSegmentedControl.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7),
+            distanceSegmentedControl.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
             distanceSegmentedControl.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7 * 0.12),
         ])
     }
@@ -194,7 +194,7 @@ class SettingsView: UIView {
         gradientLogoConstraints()
     }
 
-    required init?(coder: NSCoder) {
+    override required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 

@@ -10,7 +10,7 @@ class SettingsController: UIViewController, SettingsViewProtocol {
 
     private var locationManager =  CLLocationManager()
     private var geoCoder = CLGeocoder()
-    
+
     override func loadView() {
         view = SettingsView()
     }
@@ -42,20 +42,24 @@ class SettingsController: UIViewController, SettingsViewProtocol {
     @objc func newDistance() {
         let view = view as? SettingsView
         let selectedItem = view?.distanceSegmentedControl.selectedSegmentIndex
-        var distance: Int?
+        var distance = 0
 
         switch selectedItem {
         case 0:
-            distance = 20
+            distance = 0
         case 1:
-            distance = 100
+            distance = 20
         case 2:
+            distance = 100
+        case 3:
             distance = 1000
+        case 4:
+            distance = 10000000
         default:
             break
         }
 
-        UserSettings.distance = distance ?? 10000000
+        UserSettings.distance = distance
     }
 
     func setSegmentedControlValue() {
@@ -64,14 +68,17 @@ class SettingsController: UIViewController, SettingsViewProtocol {
         var index = 0
 
         switch  UserSettings.distance {
-        case 20:
+        case 0:
             index = 0
-        case 100:
+        case 20:
             index = 1
-        case 1000:
+        case 100:
             index = 2
-        default:
+        case 1000:
             index = 3
+        case 10000000:
+            index = 4
+        default:
             break
         }
 

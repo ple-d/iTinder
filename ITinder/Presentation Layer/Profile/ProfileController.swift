@@ -3,7 +3,7 @@ import UIKit
 protocol ProfileViewProtocol: AnyObject {
     func setImageForCell(index: Int, imageData: Data)
     func reloadPhotoCollection()
-    func setUserInformation(name: String, age: String, gender: String, position: String, englishLevel: String, biography: String)
+    func setUserInformation(name: String, age: String, gender: String, position: String, englishLevel: String, biography: String, country: String, city: String)
     func updateCard()
 }
 
@@ -40,13 +40,14 @@ class ProfileController: UIViewController, ProfileViewProtocol {
     }
 
 
-    func setUserInformation(name: String, age: String, gender: String, position: String, englishLevel: String, biography: String) {
+    func setUserInformation(name: String, age: String, gender: String, position: String, englishLevel: String, biography: String, country: String, city: String) {
         let view = view as? ProfileView
         view?.card.nameAndAgeLabel.text = "\(name), \(age)"
         view?.card.genderLabel.text = gender
         view?.card.positionLabel.text = "👨‍💻 \(position)"
         view?.card.englishLevelLabel.text = "🇬🇧 \(englishLevel)"
         view?.biographyLabel.text = biography
+        view?.locationLabel.text = "📍\(country), \(city)"
     }
 
     // Установка изображения для ячейки photoCollection

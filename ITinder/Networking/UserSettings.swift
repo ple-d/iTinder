@@ -9,10 +9,6 @@ class UserSettings {
 
     static var distance: Int {
         get {
-            guard userDefaults.integer(forKey: SettingsKeys.distance.rawValue) > 0 else {
-                return 10000000
-            }
-
             return userDefaults.integer(forKey: SettingsKeys.distance.rawValue)
         }
         set {

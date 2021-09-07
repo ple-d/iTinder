@@ -10,11 +10,12 @@ class OnboardingPresenter: OnboardingPresenterProtocol {
     private var moduleRouter: ModuleRouterProtocol
 
     let slides: [OnboardingSlide] = [
-        OnboardingSlide(title: "Свайпай влево!1", text: "Не понравился человек? Свайпни влево и больше его не увидишь", image: UIImage()),
-        OnboardingSlide(title: "Свайпай влево!2", text: "Не понравился человек? Свайпни влево и больше его не увидишь", image: UIImage()),
-        OnboardingSlide(title: "Свайпай влево!3", text: "Не понравился человек? Свайпни влево и больше его не увидишь", image: UIImage())
+        OnboardingSlide(title: "Вы полностью готовы!", text: "Ищите, знакомьтесь и наслаждайтесь. ITinder - безграничный мир единомышленников", image: UIImage()),
+        OnboardingSlide(title: "Заинтересовались?", text: "Это лайк с первого взгляда. Свайпайте влево и ждите взаимности.", image: UIImage()),
+        OnboardingSlide(title: "Не подходит", text: "Не понравился кандидат? Свайпни влево и больше его не увидишь", image: UIImage()),
+        OnboardingSlide(title: "Общайтесь", text: "После взаимного лайка пора и пообщаться.", image: UIImage())
     ]
-    
+
     init(view: OnboardingViewProtocol, moduleRouter: ModuleRouterProtocol) {
         self.view = view
         self.moduleRouter = moduleRouter

@@ -15,14 +15,13 @@ class CardView: UIView {
                 self.photoCollection.reloadData()
                 self.photoCollectionPageControl.numberOfPages = self.user!.imagePaths.count
                 self.currentSlide = 0
-                print("Сработал обсервер")
             }
         }
     }
 
     var distance: Int = 0 {
         didSet {
-            locationLabel.text = "\(distance) км от вас"
+            locationLabel.text = "📍 \(distance) км от вас"
         }
     }
 
@@ -140,7 +139,6 @@ class CardView: UIView {
         let positionLabel = UILabel()
         positionLabel.translatesAutoresizingMaskIntoConstraints = false
         positionLabel.text = "👨‍💻 Профессия"
-        positionLabel.textAlignment = .center
         positionLabel.textColor = appColor.gray
 
         return positionLabel
@@ -149,7 +147,8 @@ class CardView: UIView {
     func positionLabelConstraints() {
         NSLayoutConstraint.activate([
             positionLabel.topAnchor.constraint(equalTo: nameAndAgeLabel.bottomAnchor, constant: UIScreen.main.bounds.height / 85),
-            positionLabel.leftAnchor.constraint(equalTo: nameAndAgeLabel.leftAnchor)
+            positionLabel.leftAnchor.constraint(equalTo: nameAndAgeLabel.leftAnchor),
+            positionLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -UIScreen.main.bounds.height / 100)
         ])
     }
 
@@ -157,7 +156,6 @@ class CardView: UIView {
         let englishLevelLabel = UILabel()
         englishLevelLabel.translatesAutoresizingMaskIntoConstraints = false
         englishLevelLabel.text = "🇬🇧 Уровень английского"
-        englishLevelLabel.textAlignment = .center
         englishLevelLabel.textColor = appColor.gray
 
         return englishLevelLabel
@@ -186,13 +184,13 @@ class CardView: UIView {
             locationLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -UIScreen.main.bounds.height / 50)
         ])
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         photoCollection.delegate = self
         photoCollection.dataSource = self
-        
+
         backgroundColor = .white
 
         addSubview(photoCollection)
@@ -231,6 +229,10 @@ class CardView: UIView {
         DispatchQueue.main.async { [weak self] in
             self?.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self?.slideImage), userInfo: nil, repeats: true)
         }
+    }
+
+    deinit {
+        timer = nil
     }
 
     fileprivate func handleEnded(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -282,17 +284,16 @@ class CardView: UIView {
             return
         }
 
-        if currentSlide < user?.imagePaths.count ?? 0 {
+        if currentSlide < (user?.imagePaths.count ?? 0) - 1 {
+            currentSlide += 1
             let index = IndexPath.init(item: currentSlide, section: 0)
             photoCollection.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
             photoCollectionPageControl.currentPage = currentSlide
-            currentSlide += 1
         } else {
             currentSlide = 0
             let index = IndexPath.init(item: currentSlide, section: 0)
             photoCollection.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
             photoCollectionPageControl.currentPage = currentSlide
-            currentSlide += 1
         }
     }
 
@@ -333,5 +334,6 @@ extension CardView: UICollectionViewDelegate, UICollectionViewDataSource {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let width = scrollView.bounds.width
         currentSlide = Int(scrollView.contentOffset.x / width)
+        photoCollectionPageControl.currentPage = currentSlide
     }
 }

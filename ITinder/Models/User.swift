@@ -42,7 +42,7 @@ class User: NSObject, Codable {
     var conversations = [String]()
     var registrationIsFinished: Bool?
     var country: String?
-    var city: String?
+    @objc dynamic var city: String?
     var longitude: Double?
     var latitude: Double?
 
@@ -54,7 +54,7 @@ class User: NSObject, Codable {
         self.isMale = isMale
         self.registrationIsFinished = registrationIsFinished
     }
-    
+
     init(dictionary: [String: Any]) {
         self.id =   dictionary["id"] as? String
         self.name = dictionary["name"] as? String

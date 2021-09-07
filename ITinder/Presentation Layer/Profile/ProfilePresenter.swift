@@ -14,6 +14,7 @@ class ProfilePresenter: ProfilePresenterProtocol {
     private let firebaseManager = FirebaseManager()
 
     var biographyObserver: NSKeyValueObservation?
+    var locationObserver: NSKeyValueObservation?
 
     func getImageData() {
         guard let imagePaths = User.currentUser?.imagePaths else {
@@ -27,7 +28,7 @@ class ProfilePresenter: ProfilePresenterProtocol {
 
             User.currentUser?.imageDictionary[imagePath] = imageData
             self.view?.updateCard()
-           
+
         }
     }
 
@@ -37,13 +38,20 @@ class ProfilePresenter: ProfilePresenterProtocol {
 
         if let currentUser = User.currentUser {
             let gender = currentUser.isMale ?? true ? "мужской" : "женский"
-            view.setUserInformation(name: currentUser.name ?? "", age: String(currentUser.age), gender: gender, position: currentUser.position ?? "", englishLevel: currentUser.englishLevel ?? "", biography: currentUser.biography ?? "")
+            view.setUserInformation(name: currentUser.name ?? "", age: String(currentUser.age), gender: gender, position: currentUser.position ?? "", englishLevel: currentUser.englishLevel ?? "", biography: currentUser.biography ?? "", country: currentUser.country ?? "", city: currentUser.city ?? "")
         }
 
         biographyObserver = User.currentUser!.observe(\.biography) { _, _ in
             if let currentUser = User.currentUser {
                 let gender = currentUser.isMale ?? true ? "мужской" : "женский"
-                view.setUserInformation(name: currentUser.name ?? "", age: String(currentUser.age), gender: gender, position: currentUser.position ?? "", englishLevel: currentUser.englishLevel ?? "", biography: currentUser.biography ?? "")
+                view.setUserInformation(name: currentUser.name ?? "", age: String(currentUser.age), gender: gender, position: currentUser.position ?? "", englishLevel: currentUser.englishLevel ?? "", biography: currentUser.biography ?? "", country: currentUser.country ?? "", city: currentUser.city ?? "")
+            }
+        }
+
+        locationObserver = User.currentUser!.observe(\.city, options: [.new]) { (defaults, change) in
+            if let currentUser = User.currentUser {
+                let gender = currentUser.isMale ?? true ? "мужской" : "женский"
+                view.setUserInformation(name: currentUser.name ?? "", age: String(currentUser.age), gender: gender, position: currentUser.position ?? "", englishLevel: currentUser.englishLevel ?? "", biography: currentUser.biography ?? "", country: currentUser.country ?? "", city: currentUser.city ?? "")
             }
         }
 

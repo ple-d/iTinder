@@ -4,7 +4,9 @@ protocol MatchViewProtocol: AnyObject {
     func setBiography(_ biography: String)
     func newCard(user: User, distance: Int)
     func noCardStackViewIsVisible(_ isVisible: Bool)
+    func setLocation(country: String, city: String)
     func update()
+    func showItsMatchView()
 }
 
 class MatchController: UIViewController, MatchViewProtocol {
@@ -30,17 +32,26 @@ class MatchController: UIViewController, MatchViewProtocol {
 
         let likeGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(likeUser))
         view?.likeButton.addGestureRecognizer(likeGestureRecognizer)
+
+        let toChatGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(toChatDidTouched))
+        view?.toChatButton.addGestureRecognizer(toChatGestureRecognizer)
+
+        let continueGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(continueDidTouched))
+        view?.continueLabel.addGestureRecognizer(continueGestureRecognizer)
+
+
     }
 
     func update() {
         let view = view as? MatchView
-        
+
         cards.removeAll()
         view?.cardContainer.subviews.forEach { card in
             card.removeFromSuperview()
+
         }
     }
-    
+
     @objc func dismissUser() {
         guard let card = cards.first else {
             return
@@ -68,6 +79,8 @@ class MatchController: UIViewController, MatchViewProtocol {
         view?.noCardStackView.isHidden = !isVisible
         view?.dismissButton.isHidden = isVisible
         view?.likeButton.isHidden = isVisible
+        view?.locationLabel.isHidden = isVisible
+        view?.biographyLabel.isHidden = isVisible
     }
 
     fileprivate func performSwipeAnimation(translation: CGFloat, angle: CGFloat) {
@@ -127,13 +140,51 @@ class MatchController: UIViewController, MatchViewProtocol {
         let view = view as! MatchView
         view.biographyLabel.text = biography
     }
+
+    func setLocation(country: String, city: String) {
+        let view = view as! MatchView
+        view.locationLabel.text = "📍\(country), \(city)"
+    }
+
+    func showItsMatchView() {
+        let view = self.view as! MatchView
+
+        view.itsMatchView.isHidden = false
+        view.blur.isHidden = false
+
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                view.itsMatchView.alpha = 1
+                view.blur.alpha = 1
+            }, completion: nil)
+        }
+
+    }
+
+    @objc func continueDidTouched() {
+        let view = self.view as! MatchView
+
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                view.itsMatchView.alpha = 0
+                view.blur.alpha = 0
+            }) { _ in
+                view.itsMatchView.isHidden = true
+                view.blur.isHidden = true
+            }
+        }
+
+    }
+
+    @objc func toChatDidTouched() {
+        presenter?.toChat()
+    }
 }
 
 extension MatchController: CardViewDelegate {
     func cardLike(_ card: CardView) {
         performSwipeAnimation(translation: 700, angle: 15)
         presenter?.newLike(id: card.user?.id ?? "")
-        presenter?.loadUsers(count: 1)
 
         guard let isMatched = card.user?.likes.contains(User.currentUser?.id ?? ""), isMatched == true else {
             return
@@ -145,6 +196,5 @@ extension MatchController: CardViewDelegate {
     func cardDislike(_ card: CardView) {
         performSwipeAnimation(translation: -700, angle: -15)
         presenter?.newDislike(id: card.user?.id ?? "")
-        presenter?.loadUsers(count: 1)
     }
 }
