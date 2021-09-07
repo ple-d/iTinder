@@ -10,6 +10,7 @@ import SwiftUI
 struct ChatView: View {
     @EnvironmentObject var storageManager: StorageManager
     let user: OtherUser
+    
     var body : some View{
         
         ZStack{
@@ -20,20 +21,27 @@ struct ChatView: View {
                 
                 ChatTopView(user: user)
                 
-                GeometryReader{_ in
+                ScrollViewReader{scrollView in
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         if let messages = storageManager.messages[user.id], !messages.isEmpty {
                             VStack{
                                 ForEach(messages){msg in
                                     ChatCell(message: msg)
+                                }.onChange(of: messages.count) { item in
+                                    if let messages = storageManager.messages[user.id] {
+                                        scrollView.scrollTo(messages.last)
+                                    }
                                 }
                             }
+                        }
+                    }.onAppear {
+                        if let messages = storageManager.messages[user.id] {
+                            scrollView.scrollTo(messages.last)
                         }
                     }
                     .padding(.horizontal, 15)
                     
-                    //                    .clipShape(Rounded())
                 }.background(Color.white)
                 
                 ChatBottomView(user: user).background(Color.white)

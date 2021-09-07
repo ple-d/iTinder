@@ -86,7 +86,7 @@ class StorageManager : ObservableObject {
                     guard let msg = try? doc.document.data(as: Message.self) else { return }
                     msgs.append(msg)
                     DispatchQueue.main.async {
-                        self.messages[chatId] = msgs
+                        self.messages[chatId] = msgs.sorted { $0.timeStamp < $1.timeStamp}
                     }
                 }
             }
@@ -95,13 +95,11 @@ class StorageManager : ObservableObject {
     
     func sendMessage(chatId: String, message: Message) {
         guard let currentUser = currentUser else { return }
-        
         let _ = try! db.collection("users").document(chatId).collection(currentUser.id).addDocument(from: message) {error in
             if error != nil {
                 print(error!.localizedDescription)
                 return
             }}
-        
         let _ = try! db.collection("users").document(currentUser.id).collection(chatId).addDocument(from: message) {
             error in
             if error != nil {
@@ -145,32 +143,6 @@ class StorageManager : ObservableObject {
         }
     }
     
-    func fetchUsers(completion: @escaping () -> ()) {
-        guard let currentUser = currentUser else { return }
-        self.db.collection("users").getDocuments { (snap, error) in
-            
-            if let error = error {
-                
-                print(error.localizedDescription)
-                return
-            }
-            
-            guard let data = snap else { return }
-            
-            for i in data.documents {
-                if self.users.count == 2 {
-                    break
-                }
-                let id = i.documentID
-                
-                if currentUser.likes.contains(id) || currentUser.dislikes.contains(id) || id == currentUser.id {
-                    continue
-                }
-                self.users.append(OtherUser(id: id, name: i.get("name") as? String ?? ""))
-                completion()
-            }
-        }
-    }
     
     func updateUser(value: [String: Any]) {
         guard let id = currentUser?.id else { return }
@@ -180,59 +152,6 @@ class StorageManager : ObservableObject {
                 print(error.localizedDescription)
             } else {
                 print("Document successfully updated")
-            }
-        }
-    }
-    
-    func updateUserMatches(id: String) {
-        guard let currentUser = currentUser else { return }
-        var curUserLiked = Set(currentUser.likes)
-        var curUserMatches = Set(currentUser.matches)
-        curUserLiked.insert(id)
-        let docRef = db.collection("users").document(id)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                guard let data = document.data() else {
-                    print("Document data was empty.")
-                    return
-                }
-                let otherLiked = data["liked"] as? [String] ?? []
-                var otherMatches = Set(data["matches"] as? [String] ?? [])
-                if otherLiked.contains(currentUser.id) {
-                    curUserMatches.insert(id)
-                    otherMatches.insert(currentUser.id)
-                    docRef.updateData(["matches": Array(otherMatches)])
-                    self.updateUser(value: ["liked": Array(curUserLiked), "matches": Array(curUserMatches)])
-                } else {
-                    self.updateUser(value: ["liked": Array(curUserLiked)])
-                }
-            }
-        }
-    }
-    
-    func uploadImage(image: UIImage, completion: @escaping (String?) -> ()) {
-        // Create a storage reference
-        let storageRef = storage.reference().child("images/\(String(describing: currentUser?.id))/image.jpg")
-        
-        // Resize the image to 200px with a custom extension
-        let resizedImage = image.aspectFittedToHeight(200)
-        
-        // Convert the image into JPEG and compress the quality to reduce its size
-        let data = resizedImage.jpegData(compressionQuality: 0.2)
-        
-        // Change the content type to jpg. If you don't, it'll be saved as application/octet-stream type
-        let metadata = StorageMetadata()
-        metadata.contentType = "image/jpg"
-        
-        // Upload the image
-        if let data = data {
-            storageRef.putData(data, metadata: metadata) { (metadata, error) in
-                if let error = error {
-                    print("Error while uploading file: ", error)
-                }
-                storageRef.downloadURL { url, error in
-                    completion(url?.absoluteString)
-                }
             }
         }
     }

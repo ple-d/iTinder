@@ -32,6 +32,7 @@ struct ChatCell : View {
             
         }.padding(message.user == storageManager.currentUser?.id ? .leading : .trailing, 55)
         .padding(.vertical,10)
+        .id(message)
     }
 }
 
