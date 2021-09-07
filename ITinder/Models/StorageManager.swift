@@ -95,12 +95,20 @@ class StorageManager : ObservableObject {
     
     func sendMessage(chatId: String, message: Message) {
         guard let currentUser = currentUser else { return }
+        
+        let _ = try! db.collection("users").document(chatId).collection(currentUser.id).addDocument(from: message) {error in
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            }}
+        
         let _ = try! db.collection("users").document(currentUser.id).collection(chatId).addDocument(from: message) {
             error in
             if error != nil {
                 print(error!.localizedDescription)
                 return
             }
+            
             if !currentUser.chats.contains(chatId){
                 var chats = currentUser.chats
                 chats.append(chatId)
