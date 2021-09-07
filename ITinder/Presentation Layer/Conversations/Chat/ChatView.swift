@@ -34,6 +34,10 @@ struct ChatView: View {
                                     }
                                 }
                             }
+                        } else {
+                            HStack {
+                                Spacer()
+                            }
                         }
                     }.onAppear {
                         if let messages = storageManager.messages[user.id] {
@@ -46,7 +50,14 @@ struct ChatView: View {
                 
                 ChatBottomView(user: user).background(Color.white)
                 
-            }
+            }.navigationBarTitle("")
+            .navigationBarHidden(true)
         }
+    }
+}
+
+struct ChatView_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatBottomView(user: OtherUser(id: "", name: "Name"))
     }
 }

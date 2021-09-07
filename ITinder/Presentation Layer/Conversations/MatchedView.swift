@@ -42,12 +42,9 @@ struct MatchedView: View {
                     ForEach(storageManager.matches){user in
                         
                         NavigationLink(destination: ChatView(user: user).environmentObject(storageManager)) {
-                            VStack {
-                            GradientProfilePicture(id: user.id, gradient1: [])
-                                .frame(width: 60, height: 60)
-                                Text(user.name).foregroundColor(.white)
-                            }
+                            MatchCell(user: user).clipShape(Circle())
                         }
+                        
                     }
                 }
             }
