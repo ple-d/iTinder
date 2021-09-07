@@ -23,7 +23,7 @@ class StorageManager : ObservableObject {
     
     func checkChats(id: String, chats: Set<String>, matches: [OtherUser]) {
         if self.curChats != chats {
-
+            
             let added = chats.subtracting(self.curChats)
             self.curChats = chats
             
@@ -70,7 +70,7 @@ class StorageManager : ObservableObject {
     }
     
     func setUserChatListener(userId: String, chatId: String) {
-
+        
         db.collection("users").document(userId).collection(chatId).addSnapshotListener { snap, error in
             if error != nil {
                 print(error?.localizedDescription ?? "")
@@ -80,9 +80,9 @@ class StorageManager : ObservableObject {
             guard let data = snap else { return }
             var msgs = self.messages[chatId] ?? []
             data.documentChanges.forEach { doc in
-
+                
                 if doc.type == .added {
-
+                    
                     guard let msg = try? doc.document.data(as: Message.self) else { return }
                     msgs.append(msg)
                     DispatchQueue.main.async {
@@ -118,26 +118,26 @@ class StorageManager : ObservableObject {
     
     func fetchMatches(matches: [String], completion: @escaping ([OtherUser]) -> ()) {
         let group = DispatchGroup()
-
+        
         var matchesData = [OtherUser]()
-            for id in matches {
-                group.enter()
-                let docRef = self.db.collection("users").document(id)
-                docRef.getDocument { (document, error) in
-                    defer { group.leave() }
-                    if let document = document, document.exists {
-                        guard let data = document.data() else {
-                            print("Document data was empty.")
-                            return
-                        }
-                        matchesData.append(OtherUser(id: id, name: data["name"] as? String ?? ""))
-                        
-                    } else {
-                        print("Document does not exist")
+        for id in matches {
+            group.enter()
+            let docRef = self.db.collection("users").document(id)
+            docRef.getDocument { (document, error) in
+                defer { group.leave() }
+                if let document = document, document.exists {
+                    guard let data = document.data() else {
+                        print("Document data was empty.")
+                        return
                     }
+                    matchesData.append(OtherUser(id: id, name: data["name"] as? String ?? ""))
+                    
+                } else {
+                    print("Document does not exist")
                 }
-                
             }
+            
+        }
         group.notify(queue: .main) {
             completion(matchesData)
         }
@@ -156,35 +156,25 @@ class StorageManager : ObservableObject {
         }
     }
     
-    func fetchUserPictures(id: String, completion: @escaping ([URL])->()) {
-        let group = DispatchGroup()
+    func fetchUserPictures(id: String, completion: @escaping (URL)->()) {
         let storageRef = storage.reference().child("users/\(id)/images")
-        var data = [URL]()
-        // List all items in the images folder
-        group.enter()
         storageRef.listAll { (result, error) in
             
             if let error = error {
                 print("Error while listing all files: ", error)
             }
-           
-            for item in result.items {
-                //List storage reference
-                
-                let storageLocation = String(describing: item)
-                let gsReference = Storage.storage().reference(forURL: storageLocation)
-                
-                // Fetch the download URL
-                gsReference.downloadURL { url, error in
-                    defer { group.leave() }
-                    guard error == nil, let url = url else { print("error, \(error?.localizedDescription ?? "")")
-                        return }
-                    data.append(url)
-                }
+            
+            let storageLocation = String(describing: result.items[0])
+            let gsReference = Storage.storage().reference(forURL: storageLocation)
+            
+            // Fetch the download URL
+            gsReference.downloadURL { url, error in
+                guard error == nil, let url = url else { print("error, \(error?.localizedDescription ?? "")")
+                    return }
+                completion(url)
             }
+            
         }
-        group.notify(queue: .main) {
-            completion(data)
-        }
+        
     }
 }

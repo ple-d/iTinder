@@ -53,7 +53,7 @@ struct GradientProfilePicture: View {
         }.onAppear {
             storageManager.fetchUserPictures(id: id) { data in
                 DispatchQueue.main.async {
-                    picUrl = data[0]
+                    picUrl = data
                 }
             }
         }

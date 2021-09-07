@@ -39,7 +39,7 @@ struct ChatRow: View {
         }
         .onAppear {
             storageManager.fetchUserPictures(id: user.id) { data in
-                self.picture = data[0]
+                self.picture = data
             }
         }
         .padding(9)

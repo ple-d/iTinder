@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22B045306EA23801F97C7F98 /* Pods_ITinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42D099EFDA2B0C7BC46945 /* Pods_ITinder.framework */; };
+		84852FF926E7BAE200E03A35 /* MatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84852FF826E7BAE200E03A35 /* MatchCell.swift */; };
 		CF3E8A4126CF7A09009CA554 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E8A4026CF7A09009CA554 /* AboutView.swift */; };
 		CF3E8A4326CF7A14009CA554 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E8A4226CF7A14009CA554 /* AboutController.swift */; };
 		CF3E8A4526CF7A20009CA554 /* AboutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E8A4426CF7A20009CA554 /* AboutPresenter.swift */; };
@@ -87,6 +88,7 @@
 /* Begin PBXFileReference section */
 		145B3B736EBFF0F4DD12DDA1 /* Pods-ITinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITinder.debug.xcconfig"; path = "Target Support Files/Pods-ITinder/Pods-ITinder.debug.xcconfig"; sourceTree = "<group>"; };
 		641E5BA3A528E8C91F68979E /* Pods-ITinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITinder.release.xcconfig"; path = "Target Support Files/Pods-ITinder/Pods-ITinder.release.xcconfig"; sourceTree = "<group>"; };
+		84852FF826E7BAE200E03A35 /* MatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCell.swift; sourceTree = "<group>"; };
 		CE42D099EFDA2B0C7BC46945 /* Pods_ITinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3E8A4026CF7A09009CA554 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		CF3E8A4226CF7A14009CA554 /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 			children = (
 				CFF799B826E3558800A8EEE8 /* ConversationsController.swift */,
 				D6F0DA9026E6A071008A181B /* MatchedView.swift */,
+				84852FF826E7BAE200E03A35 /* MatchCell.swift */,
 				D6F0DA9226E6A0B4008A181B /* MessagesView.swift */,
 				D6F0DAA126E6A2B6008A181B /* Chat */,
 				D6F0DA9826E6A142008A181B /* List */,
@@ -640,6 +643,7 @@
 				CF3E8A4526CF7A20009CA554 /* AboutPresenter.swift in Sources */,
 				CFA9C5AC26D18DF700B1734A /* ProfileController.swift in Sources */,
 				CFF799FA26E619F700A8EEE8 /* ChangePasswordPresenter.swift in Sources */,
+				84852FF926E7BAE200E03A35 /* MatchCell.swift in Sources */,
 				D6F0DA9E26E6A25C008A181B /* ChatTopView.swift in Sources */,
 				D6F0DAAD26E6AF12008A181B /* GradientProfilePicture-SwiftUI.swift in Sources */,
 				CFF799B926E3558800A8EEE8 /* ConversationsController.swift in Sources */,
