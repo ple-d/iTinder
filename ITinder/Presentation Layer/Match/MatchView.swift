@@ -361,7 +361,7 @@ class MatchView: UIView {
         biographyLabel.font = UIFont(name: "HelveticaNeue-Medium", size: bounds.height * 0.02)
     }
 
-    override required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
