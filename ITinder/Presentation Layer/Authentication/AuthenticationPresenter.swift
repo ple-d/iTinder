@@ -14,6 +14,7 @@ class AuthenticationPresenter: AuthenticationPresenterProtocol {
     init(view: AuthenticationViewProtocol, moduleRouter: ModuleRouterProtocol) {
         self.view = view
         self.moduleRouter = moduleRouter
+
     }
 
     // Авторизация пользователя

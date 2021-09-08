@@ -7,6 +7,7 @@ protocol MatchViewProtocol: AnyObject {
     func setLocation(country: String, city: String)
     func update()
     func showItsMatchView()
+    func hideItsMatchView()
 }
 
 class MatchController: UIViewController, MatchViewProtocol {
@@ -161,7 +162,7 @@ class MatchController: UIViewController, MatchViewProtocol {
 
     }
 
-    @objc func continueDidTouched() {
+    func hideItsMatchView() {
         let view = self.view as! MatchView
 
         DispatchQueue.main.async {
@@ -173,6 +174,10 @@ class MatchController: UIViewController, MatchViewProtocol {
                 view.blur.isHidden = true
             }
         }
+    }
+
+    @objc func continueDidTouched() {
+        hideItsMatchView()
 
     }
 

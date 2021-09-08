@@ -8,8 +8,6 @@ protocol OtherProfileViewProtocol: AnyObject {
 }
 
 class OtherProfileController: UIViewController, OtherProfileViewProtocol {
-
-
     func updateCard() {
         let view = view as? OtherProfileView
         view?.card.update()
@@ -39,6 +37,7 @@ class OtherProfileController: UIViewController, OtherProfileViewProtocol {
         let view = view as? OtherProfileView
         view?.card.user = user
         view?.biographyLabel.text = user.biography
+        view?.locationLabel.text = "📍 \(user.country ?? "Нет страны"), \(user.city ?? "Нет города")"
     }
 
     // Установка изображения для ячейки photoCollection

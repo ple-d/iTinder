@@ -65,9 +65,28 @@ class OtherProfileView: UIView {
 
     func biographyLabelConstraints() {
         NSLayoutConstraint.activate([
-            biographyLabel.topAnchor.constraint(equalTo: chatButton.bottomAnchor, constant: UIScreen.main.bounds.height / 100),
+            biographyLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: UIScreen.main.bounds.height / 100),
             biographyLabel.leftAnchor.constraint(equalTo: card.leftAnchor, constant: 10),
             biographyLabel.rightAnchor.constraint(equalTo: card.rightAnchor, constant: -10)
+        ])
+    }
+
+    let locationLabel: UILabel = {
+        let locationLabel = UILabel()
+        locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        locationLabel.numberOfLines = 0
+        locationLabel.lineBreakMode = .byWordWrapping
+        locationLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        locationLabel.textColor = appColor.black
+
+        return locationLabel
+    }()
+
+    func locationLabelConstraints() {
+        NSLayoutConstraint.activate([
+            locationLabel.topAnchor.constraint(equalTo: chatButton.bottomAnchor, constant: UIScreen.main.bounds.height / 100),
+            locationLabel.leftAnchor.constraint(equalTo: card.leftAnchor, constant: 10),
+            locationLabel.rightAnchor.constraint(equalTo: card.rightAnchor, constant: -10)
         ])
     }
 
@@ -104,6 +123,9 @@ class OtherProfileView: UIView {
         addSubview(chatButton)
         chatButtonConstraints()
 
+        addSubview(locationLabel)
+        locationLabelConstraints()
+
         addSubview(biographyLabel)
         biographyLabelConstraints()
     }
@@ -117,5 +139,6 @@ class OtherProfileView: UIView {
         layoutIfNeeded()
 
         biographyLabel.font = UIFont(name: "HelveticaNeue-Medium", size: bounds.height * 0.02)
+        locationLabel.font = UIFont(name: "HelveticaNeue-Bold", size: bounds.height * 0.022)
     }
 }

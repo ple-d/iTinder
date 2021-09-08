@@ -38,6 +38,7 @@ class FirebaseManager: DBManagerProtocol {
         }
     }
 
+
     // Универсальный метод-обертка для выгрузки Data из модуля Storage
     func loadDataFromStorage(path: String, completion: @escaping (_ data: Data?, _ error: String?) -> ()) {
         storage.reference(withPath: path).getData(maxSize: 8 * 1024 * 1024) { data, error in
