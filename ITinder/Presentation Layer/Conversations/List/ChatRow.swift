@@ -34,6 +34,11 @@ struct ChatRow: View {
             
             VStack(spacing: 10){
                 Text(formatDate(date: storageManager.messages[user.id]?.last?.timeStamp))
+                if let countMsgs = storageManager.msgToRead[user.id], countMsgs > 0 {
+                    Text("\(countMsgs)").padding(8).background(Color(.blue)).foregroundColor(.white).clipShape(Circle())
+                }  else {
+                    Spacer()
+                }
             }
             
         }

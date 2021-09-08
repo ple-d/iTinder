@@ -59,6 +59,8 @@ struct ChatView: View {
             .sheet(isPresented: $showProfile, content: {
                 // Profile here
             })
+        }.onAppear {
+            storageManager.msgToRead[user.id] = 0
         }
     }
 }

@@ -16,6 +16,7 @@ class StorageManager : ObservableObject {
     @Published var chats = [OtherUser]()
     @Published var foundChats = [OtherUser]()
     @Published var messages = [String:[Message]]()
+    @Published var msgToRead = [String: Int]()
     
     private let db = Firestore.firestore()
     private let storage = Storage.storage()
@@ -84,14 +85,19 @@ class StorageManager : ObservableObject {
             
             guard let data = snap else { return }
             var msgs = self.messages[chatId] ?? []
+            var countMsgs = 0
             data.documentChanges.forEach { doc in
                 
                 if doc.type == .added {
                     
                     guard let msg = try? doc.document.data(as: Message.self) else { return }
                     msgs.append(msg)
+                    if msg.user == chatId {
+                        countMsgs+=1
+                    }
                     DispatchQueue.main.async {
                         self.messages[chatId] = msgs.sorted { $0.timeStamp < $1.timeStamp}
+                        self.msgToRead[chatId, default: 0] = countMsgs
                     }
                 }
             }
