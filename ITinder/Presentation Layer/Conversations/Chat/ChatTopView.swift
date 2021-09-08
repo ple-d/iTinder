@@ -11,6 +11,7 @@ struct ChatTopView: View {
     @EnvironmentObject var storageManager : StorageManager
     @Environment(\.presentationMode) var presentationMode
     let user: OtherUser
+    @Binding var showProfile: Bool
     
     var body : some View{
         
@@ -28,10 +29,13 @@ struct ChatTopView: View {
             
             VStack(spacing: 5){
                 
-                GradientProfilePicture(id: user.id)
-                    .frame(width: 60, height: 60)
-                
-//                Image(data.selectedData.pic).resizable().frame(width: 45, height: 45).clipShape(Circle())
+                Button(action: {
+                    showProfile = true
+                }, label: {
+                    GradientProfilePicture(id: user.id)
+                        .frame(width: 60, height: 60)
+                })
+               
                 
                 Text(user.name).fontWeight(.heavy)
                 

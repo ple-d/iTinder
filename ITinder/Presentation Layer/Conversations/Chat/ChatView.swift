@@ -12,6 +12,8 @@ struct ChatView: View {
     let user: OtherUser
     let stop1 = Gradient.Stop(color: .pink, location: 0.01)
     let stop2 = Gradient.Stop(color: .blue, location: 0.25)
+    @State var showProfile = false
+    
     var body : some View{
         
         ZStack{
@@ -21,7 +23,7 @@ struct ChatView: View {
                 endPoint: .bottom).edgesIgnoringSafeArea(.top)
             VStack(spacing: 0){
                 
-                ChatTopView(user: user)
+                ChatTopView(user: user, showProfile: $showProfile)
                 
                 ScrollViewReader{scrollView in
                     
@@ -54,6 +56,9 @@ struct ChatView: View {
                 
             }.navigationBarTitle("")
             .navigationBarHidden(true)
+            .sheet(isPresented: $showProfile, content: {
+                // Profile here
+            })
         }
     }
 }
