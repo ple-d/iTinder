@@ -28,13 +28,13 @@ struct ChatTopView: View {
             Spacer()
             
             VStack(spacing: 5){
-                
-                Button(action: {
-                    showProfile = true
-                }, label: {
+
+//                Button(action: {
+//                    showProfile = true
+//                }, label: {
                     GradientProfilePicture(id: user.id)
                         .frame(width: 60, height: 60)
-                })
+//                })
                
                 
                 Text(user.name).fontWeight(.heavy)
