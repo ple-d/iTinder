@@ -10,7 +10,6 @@ import SDWebImageSwiftUI
 
 struct GradientProfilePicture: View {
     @EnvironmentObject var storageManager: StorageManager
-//    var picUrl: URL?
     let id: String
     @State var picUrl: URL?
     var gradient1: [Color] = [
@@ -19,9 +18,9 @@ struct GradientProfilePicture: View {
         Color.init(red: 109/255, green: 1, blue: 185/255),
         Color.init(red: 39/255, green: 232/255, blue: 1)
     ]
-
+    
     @State private var angle: Double = 0
-
+    
     var body: some View {
         ZStack {
             AngularGradient(gradient: Gradient(colors: gradient1), center: .center, angle: .degrees(angle))
@@ -39,17 +38,9 @@ struct GradientProfilePicture: View {
             WebImage(url: picUrl)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                //                .frame(width: 66, height: 66, alignment: .center)
                 .mask(
                     Circle()
                 )
-            //            Image(uiImage: profilePicture!)
-            //                .resizable()
-            //                .aspectRatio(contentMode: .fill)
-            ////                .frame(width: 66, height: 66, alignment: .center)
-            //                .mask(
-//                    Circle()
-//            )
         }.onAppear {
             storageManager.fetchUserPictures(id: id) { data in
                 DispatchQueue.main.async {
@@ -57,6 +48,6 @@ struct GradientProfilePicture: View {
                 }
             }
         }
-
+        
     }
 }

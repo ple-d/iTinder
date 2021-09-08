@@ -17,14 +17,14 @@ struct ChatCell : View {
                 Spacer()
                 Text(message.msg)
                     .padding()
-                    .background(Color(.brown))
+                    .background(Color(appColor.blue))
                     .clipShape(msgTail(userMsg: message.user == storageManager.currentUser?.id))
                     .foregroundColor(Color.white)
             }
             else{
                 Text(message.msg)
                     .padding()
-                    .background(Color(.purple))
+                    .background(Color(appColor.pink))
                     .clipShape(msgTail(userMsg: message.user == storageManager.currentUser?.id))
                     .foregroundColor(.white)
                 Spacer()
