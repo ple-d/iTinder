@@ -14,7 +14,7 @@ protocol ModuleBuilderProtocol {
     func buildChangePasswordModule(moduleRouter: ModuleRouterProtocol) -> UIViewController
     func buildMatchModule(moduleRouter: ModuleRouterProtocol) -> UIViewController
     func buildСonversationsModule(moduleRouter: ModuleRouterProtocol) -> UIViewController
-    func buildOtherProfileModule(moduleRouter: ModuleRouterProtocol, user: User) -> UIViewController
+    func buildOtherProfileModule(moduleRouter: ModuleRouterProtocol, id: String) -> UIViewController
     func buildOnboardingModule(moduleRouter: ModuleRouterProtocol) -> UIViewController
 }
 
@@ -116,9 +116,9 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     }
 
     // Сборка модуля "Профиль другого пользователя"
-    func buildOtherProfileModule(moduleRouter: ModuleRouterProtocol, user: User) -> UIViewController {
+    func buildOtherProfileModule(moduleRouter: ModuleRouterProtocol, id: String) -> UIViewController {
         let view = OtherProfileController()
-        view.presenter = OtherProfilePresenter(view: view, moduleRouter: moduleRouter, user: user)
+        view.presenter = OtherProfilePresenter(view: view, moduleRouter: moduleRouter, id: id)
 
         return view
     }

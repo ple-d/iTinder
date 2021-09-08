@@ -20,7 +20,7 @@ class MatchPresenter: MatchPresenterProtocol {
     private let firebaseManager = FirebaseManager()
     private var distanceCanceled = [String]()
 
-    private var lastLikedUser: User?
+    private var lastLikedUserID: String?
 
     var distanceObserver: NSKeyValueObservation?
 
@@ -145,7 +145,7 @@ class MatchPresenter: MatchPresenterProtocol {
             guard error == nil else {
                 return
             }
-            self.lastLikedUser = self.users.first
+            self.lastLikedUserID = self.users.first?.id
 
             if !self.users.isEmpty {
                 self.users.remove(at: 0)
@@ -192,11 +192,11 @@ class MatchPresenter: MatchPresenterProtocol {
     }
 
     func toChat() {
-        guard let user = lastLikedUser else {
+        guard let id = lastLikedUserID else {
             return
         }
 
-        moduleRouter.toOtherProfile(user: user)
+        moduleRouter.toOtherProfile(id: id)
         view?.hideItsMatchView()
     }
 

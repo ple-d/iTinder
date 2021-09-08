@@ -11,7 +11,7 @@ protocol ModuleRouterProtocol {
     func toChangePassword() 
     func toMatch()
     func toMainApplicationModule()
-    func toOtherProfile(user: User)
+    func toOtherProfile(id: String)
     func toOnboarding()
     func popToRoot()
     func pop()
@@ -140,9 +140,9 @@ final class ModuleRouter: ModuleRouterProtocol {
     }
 
     // Переход к модулю "Профиль другого пользователя"
-    func toOtherProfile(user: User) {
+    func toOtherProfile(id: String) {
         if let navigationController = navigationController {
-            guard let module = moduleBuilder?.buildOtherProfileModule(moduleRouter: self, user: user) else {
+            guard let module = moduleBuilder?.buildOtherProfileModule(moduleRouter: self, id: id) else {
                 return
             }
             navigationController.present(module, animated: true)
