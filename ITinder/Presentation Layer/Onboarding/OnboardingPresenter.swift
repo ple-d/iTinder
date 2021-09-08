@@ -10,10 +10,9 @@ class OnboardingPresenter: OnboardingPresenterProtocol {
     private var moduleRouter: ModuleRouterProtocol
 
     let slides: [OnboardingSlide] = [
-        OnboardingSlide(title: "Вы полностью готовы!", text: "Ищите, знакомьтесь и наслаждайтесь. ITinder - безграничный мир единомышленников", image: UIImage()),
-        OnboardingSlide(title: "Заинтересовались?", text: "Это лайк с первого взгляда. Свайпайте влево и ждите взаимности.", image: UIImage()),
-        OnboardingSlide(title: "Не подходит", text: "Не понравился кандидат? Свайпни влево и больше его не увидишь", image: UIImage()),
-        OnboardingSlide(title: "Общайтесь", text: "После взаимного лайка пора и пообщаться.", image: UIImage())
+        OnboardingSlide(title: "Вы полностью готовы!", text: "Ищите, знакомьтесь и наслаждайтесь. ITinder - безграничный мир единомышленников", image: UIImage(named: "ready") ?? UIImage()),
+        OnboardingSlide(title: "Нравится?", text: "Это лайк с первого взгляда. Свайпайте вправо и ждите взаимности. В ином случае двигай пальчик влево", image: UIImage(named: "swipe") ?? UIImage()),
+        OnboardingSlide(title: "Общайтесь", text: "После взаимного лайка пора початиться.", image: UIImage(named: "chat") ?? UIImage())
     ]
 
     init(view: OnboardingViewProtocol, moduleRouter: ModuleRouterProtocol) {

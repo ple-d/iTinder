@@ -6,7 +6,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .gray
+        imageView.contentMode = .scaleAspectFit
         
         return imageView
     }()
