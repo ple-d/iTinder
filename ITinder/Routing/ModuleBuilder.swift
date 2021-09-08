@@ -132,6 +132,8 @@ final class ModuleBuilder: ModuleBuilderProtocol {
         let swiftUIController = UIHostingController(rootView: MessagesView().environmentObject(storageManager))
         swiftUIController.tabBarItem = UITabBarItem(title: "Общение", image: UIImage(named: "chatIcon"), tag: 2)
         tabBarController.tabBar.backgroundImage = UIImage.getColorImage(color: .white, size: tabBarController.tabBar.bounds.size)
+        tabBarController.tabBar.unselectedItemTintColor = appColor.gray
+        tabBarController.tabBar.tintColor = appColor.pink
         tabBarController.setViewControllers([buildProfileModule(moduleRouter: moduleRouter), buildMatchModule(moduleRouter: moduleRouter), swiftUIController], animated: false)
 
         return tabBarController

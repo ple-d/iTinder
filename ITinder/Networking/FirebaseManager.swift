@@ -289,7 +289,7 @@ class FirebaseManager: DBManagerProtocol {
 
     // Метод ответственный за выборку пользователей для экрана "Поиск пар"
     func fetchUsersForMatch(excludedIDArray: [String], count: Int, completion: @escaping ( _ user: User?, _ error: String?) -> ()) {
-        firestore.collection("users").whereField("registrationIsFinished", isEqualTo: true).whereField("id", notIn: excludedIDArray).limit(to: count).getDocuments{ snapshot, error in
+        firestore.collection("users").whereField("registrationIsFinished", isEqualTo: true).whereField("id", notIn: excludedIDArray).getDocuments{ snapshot, error in
             guard let snapshot = snapshot, error == nil else {
                 return
             }
