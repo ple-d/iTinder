@@ -54,7 +54,7 @@ class StorageManager : ObservableObject {
                     print("Document data was empty.")
                     return
                 }
-                
+
                 let matches = data["matches"] as? [String] ?? []
                 let chats = Set(data["chats"] as? [String] ?? [])
                 let imagePaths = data["imagePaths"] as? [String] ?? []
@@ -121,7 +121,7 @@ class StorageManager : ObservableObject {
             if !currentUser.chats.contains(chatId){
                 var chats = currentUser.chats
                 chats.append(chatId)
-                self.updateUser(value: ["chats": chats])
+                self.updateUser(userData: chats, userId: currentUser.id, otherId: chatId)
             }
         }
     }
@@ -155,14 +155,33 @@ class StorageManager : ObservableObject {
     }
     
     
-    func updateUser(value: [String: Any]) {
-        guard let id = currentUser?.id else { return }
-        let docRef = db.collection("users").document(id)
-        docRef.updateData(value) { error in
+    func updateUser(userData: [String], userId: String, otherId: String) {
+        let docRef = db.collection("users").document(userId)
+        docRef.updateData(["chats": userData]) { error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
                 print("Document successfully updated")
+            }
+        }
+        let otherDocRef = db.collection("users").document(otherId)
+        otherDocRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                guard let data = document.data() else {
+                    print("Document data was empty.")
+                    return
+                }
+                var chats = data["chats"] as? [String] ?? []
+                chats.append(userId)
+                otherDocRef.updateData(["chats": chats]) { error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
+            } else {
+                print("Document does not exist")
             }
         }
     }
