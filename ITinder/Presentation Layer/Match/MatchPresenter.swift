@@ -112,7 +112,11 @@ class MatchPresenter: MatchPresenterProtocol {
             }
 
             self.users.append(user)
-            self.view?.newCard(user: user, distance: self.getDistance(latitude: user.latitude ?? 0, longitude: user.longitude ?? 0))
+
+            if self.users.count < 3 {
+                self.view?.newCard(user: user, distance: self.getDistance(latitude: user.latitude ?? 0, longitude: user.longitude ?? 0))
+            }
+
 
             self.firebaseManager.loadUserImages(imagePaths: user.imagePaths) { imagePath, imageData, error in
                 guard let imageData = imageData, error == nil else {
@@ -143,6 +147,11 @@ class MatchPresenter: MatchPresenterProtocol {
                 self.users.remove(at: 0)
             }
 
+            guard let user = self.users[safe: 1] else {
+                return
+            }
+
+            self.view?.newCard(user: user, distance: self.getDistance(latitude: user.latitude ?? 0, longitude: user.longitude ?? 0))
         }
     }
 
@@ -155,6 +164,13 @@ class MatchPresenter: MatchPresenterProtocol {
             if !self.users.isEmpty {
                 self.users.remove(at: 0)
             }
+
+            guard let user = self.users[safe: 1] else {
+                print(self.users[safe: 1])
+                return
+            }
+
+            self.view?.newCard(user: user, distance: self.getDistance(latitude: user.latitude ?? 0, longitude: user.longitude ?? 0))
 
         }
     }
