@@ -19,13 +19,6 @@ struct MatchedView: View {
             
             HStack{
                 
-//                Button(action: {
-//                    presentationMode.wrappedValue.dismiss()
-//                }) {
-//
-//                    Image(systemName: "control").font(.title).rotationEffect(.init(degrees: -90))
-//                }
-                
                 Text("Ваши матчи")
                     .fontWeight(.bold)
                     .font(.title)
@@ -65,7 +58,7 @@ struct MatchedView: View {
             
         }.padding()
         .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-        .background(Color(.systemBlue))
+        .background(LinearGradient(gradient: Gradient(colors: [Color.pink, Color.blue]), startPoint: .top, endPoint: .bottom))
         .navigationBarHidden(true)
         .clipShape(shape())
         .animation(.default)
