@@ -407,9 +407,9 @@
 			isa = PBXGroup;
 			children = (
 				CFF799B826E3558800A8EEE8 /* ConversationsController.swift */,
+				D6F0DA9226E6A0B4008A181B /* MessagesView.swift */,
 				D6F0DA9026E6A071008A181B /* MatchedView.swift */,
 				84852FF826E7BAE200E03A35 /* MatchCell.swift */,
-				D6F0DA9226E6A0B4008A181B /* MessagesView.swift */,
 				D6F0DAA126E6A2B6008A181B /* Chat */,
 				D6F0DA9826E6A142008A181B /* List */,
 			);

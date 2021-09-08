@@ -9,11 +9,12 @@ import SwiftUI
 
 struct MessagesView: View {
     @EnvironmentObject var storageManager: StorageManager
+    @State var search = ""
     
     var body: some View {
         VStack(spacing: 0){
-            MatchedView().zIndex(25)
-            ChatsView().offset(y: -25)
+            MatchedView(search: $search).zIndex(25)
+            ChatsView(search: search).offset(y: -25)
         }.navigationBarTitle("Чаты", displayMode: .inline)
     }
 }

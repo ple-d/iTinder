@@ -28,3 +28,10 @@ struct ChatBottomView : View {
         
     }
 }
+
+struct ChatBottomView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        ChatBottomView(user: OtherUser(id: "", name: "Name")).environmentObject(StorageManager())
+    }
+}

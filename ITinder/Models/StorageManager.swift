@@ -14,6 +14,7 @@ class StorageManager : ObservableObject {
     @Published var users = [OtherUser]()
     @Published var matches = [OtherUser]()
     @Published var chats = [OtherUser]()
+    @Published var foundChats = [OtherUser]()
     @Published var messages = [String:[Message]]()
     
     private let db = Firestore.firestore()
@@ -35,6 +36,10 @@ class StorageManager : ObservableObject {
                 self.setUserChatListener(userId: id, chatId: chatId)
             }
         }
+    }
+    
+    func findChats(search: String) {
+        self.foundChats = self.chats.filter{ $0.name.lowercased().contains(search.lowercased())}
     }
     
     func setUserListener(id: String) {
