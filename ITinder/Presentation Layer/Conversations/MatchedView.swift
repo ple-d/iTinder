@@ -11,9 +11,16 @@ import SDWebImageSwiftUI
 struct MatchedView: View {
     @EnvironmentObject var storageManager: StorageManager
     @Environment(\.presentationMode) var presentationMode
-    @State var search = ""
+    @Binding var search: String
+    
+    private func textFieldChanged(_ text: String) { storageManager.findChats(search: search) }
     
     var body : some View{
+        
+        let binding = Binding<String>(
+            get: { self.search },
+            set: { self.search = $0; self.textFieldChanged($0) }
+        )
         
         VStack(spacing: 22){
             
@@ -45,11 +52,11 @@ struct MatchedView: View {
             HStack(spacing: 15){
                 
                 Image(systemName: "magnifyingglass")
-                .resizable()
-                .frame(width: 18, height: 18)
-                .foregroundColor(Color.black.opacity(0.3))
+                    .resizable()
+                    .frame(width: 18, height: 18)
+                    .foregroundColor(Color.black.opacity(0.3))
                 
-                TextField("Поиск", text: self.$search)
+                TextField("Поиск", text: binding).autocapitalization(.none)
                 
             }.padding()
             .background(Color.white)
@@ -69,7 +76,7 @@ struct MatchedView: View {
 
 struct MatchedView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchedView().environmentObject(StorageManager())
+        MatchedView(search: .constant("")).environmentObject(StorageManager())
     }
 }
 
@@ -82,4 +89,3 @@ struct shape : Shape {
         return Path(path.cgPath)
     }
 }
-
