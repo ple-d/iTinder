@@ -25,56 +25,6 @@ struct ChatBottomView : View {
         }
         .padding(.horizontal)
         .background(Color.white)
-//        HStack{
-//
-//            HStack(spacing : 8){
-//
-//                Button(action: {
-//
-//                }) {
-//
-//                    Image("emoji").resizable().frame(width: 20, height: 20)
-//
-//                }.foregroundColor(.gray)
-//
-//                TextField("Type Something", text: $txt)
-//
-//                Button(action: {
-//
-//                }) {
-//
-//                    Image(systemName: "camera.fill").font(.body)
-//
-//                }.foregroundColor(.gray)
-//
-//                Button(action: {
-//
-//                }) {
-//
-//                    Image(systemName: "paperclip").font(.body)
-//
-//                }.foregroundColor(.gray)
-//
-//            }.padding()
-//            .background(Color(.blue))
-//            .clipShape(Capsule())
-//
-//            Button(action: {
-//
-//            }) {
-//
-//                Image(systemName: "mic.fill")
-//                    .resizable()
-//                    .frame(width: 15, height: 23)
-//                    .padding(13)
-//                    .foregroundColor(.white)
-//                    .background(Color(.blue))
-//                    .clipShape(Circle())
-//
-//            }.foregroundColor(.gray)
-//
-//        }.padding(.horizontal, 15)
-//        .background(Color.white)
         
     }
 }

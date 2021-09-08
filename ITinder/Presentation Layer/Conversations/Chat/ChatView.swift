@@ -10,13 +10,15 @@ import SwiftUI
 struct ChatView: View {
     @EnvironmentObject var storageManager: StorageManager
     let user: OtherUser
-    
+    let stop1 = Gradient.Stop(color: .pink, location: 0.01)
+    let stop2 = Gradient.Stop(color: .blue, location: 0.25)
     var body : some View{
         
         ZStack{
-            
-            Color(.systemBlue).edgesIgnoringSafeArea(.top)
-            
+            LinearGradient(
+                gradient: Gradient(stops: [stop1, stop2]),
+                startPoint: .top,
+                endPoint: .bottom).edgesIgnoringSafeArea(.top)
             VStack(spacing: 0){
                 
                 ChatTopView(user: user)
@@ -57,7 +59,8 @@ struct ChatView: View {
 }
 
 struct ChatView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        ChatBottomView(user: OtherUser(id: "", name: "Name"))
+        ChatView(user: OtherUser(id: "", name: "Name")).environmentObject(StorageManager())
     }
 }
